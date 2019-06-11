@@ -1,50 +1,39 @@
 /* global __dirname, require, module*/
 
-const webpack = require('webpack');
-const common = require('./assets/common');
-const loaders = require('./assets/loaders');
-const plugins = require('./assets/plugins');
-const argv = require('yargs').argv; // use --env with webpack 2
-const pkg = require('../package.json');
+const webpack = require("webpack");
+const common = require("./assets/common");
+const loaders = require("./assets/loaders");
+const plugins = require("./assets/plugins");
+const argv = require("yargs").argv; // use --env with webpack 2
+const pkg = require("../package.json");
 
 let outputFile, mode, modeType;
 
-if (argv.env === 'prod') {
-  mode = 'production';
-  outputFile = `${pkg.library}.min.js`;
+if (argv.env === "prod") {
+  mode = "production";
+  outputFile = `${pkg.library}.min`;
 } else {
-  mode = 'development';
-  outputFile = `${pkg.library}.js`;
+  mode = "development";
+  outputFile = `${pkg.library}`;
 }
 
-modeType = mode === 'production';
+modeType = mode === "production";
 
 const config = {
   mode: mode,
-  entry: `${common.ROOT_PATH}/src/index.js`,
-  devtool: modeType ? false : 'inline-source-map',
+  entry: `${common.ROOT_PATH}/src/index.tsx`,
+  devtool: modeType ? false : "source-map",
   output: {
     path: common.DISTRIBUTION_PATH,
-    filename: outputFile,
-    library: pkg.library,
-    libraryTarget: 'umd',
-    umdNamedDefine: true,
-    globalObject: "typeof self !== 'undefined' ? self : this"
+    filename: outputFile + ".umd.js",
+    libraryTarget: "umd"
   },
   module: {
-    rules: [
-      loaders.babel,
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ]
+    rules: [loaders.typescript, loaders.sourcemap]
   },
-  plugins: [plugins.uglifyjs],
+  plugins: mode ? [plugins.uglifyjs] : [],
   resolve: {
-    modules: [`${common.ROOT_PATH}/node_modules`, `${common.ROOT_PATH}/../../node_modules`, `${common.ROOT_PATH}/src`],
-    extensions: ['.json', '.js']
+    extensions: [".ts", ".tsx", ".js", ".json"]
   },
   performance: {
     hints: false

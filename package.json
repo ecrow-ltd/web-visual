@@ -5,6 +5,10 @@
   "description": "Library of Visual Components for eCrow Ltd.",
   "private": true,
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "clean": "npm run clean:lib && npm run clean:dist",
     "clean:dist": "rimraf ./dist/*",
@@ -13,11 +17,11 @@
     "build:dist": "npm run build:dist:dev && npm run build:dist:prod",
     "build:dist:dev": "webpack --dest distribution --env dev --config config/webpack.config.js",
     "build:dist:prod": "webpack --dest distribution --env prod --config config/webpack.config.js",
-    "build:lib": "babel ./src/ -x '.js' -d ./lib",
+    "build:lib": "tsc --sourceRoot ./src --outDir ./lib -d --declarationDir ./lib",
     "build:doc": "jsdoc src -c ./jsdoc.config.json",
     "start": "nodemon --exec 'yarn build:lib' --watch ./src",
     "dev": "webpack --progress --colors --watch --env dev --config config/webpack.config.js",
-    "repl": "node -i -e \"$(< ./lib/ecrow-visual.js)\""
+    "repl": "node -i -e \"$(< ./lib/visual-web.js)\""
   },
   "repository": {
     "type": "git",
@@ -26,49 +30,29 @@
   "keywords": [
     "webpack",
     "es6",
-    "starter",
     "library",
     "universal",
     "umd",
     "commonjs"
   ],
-  "author": "eCrow Ltd.",
+  "author": "Eric Crowell",
   "license": "ISC",
   "homepage": "https://github.com/ecrow-ltd/visual-web#readme",
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.1",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-proposal-decorators": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.0.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.2",
-    "babel-plugin-emotion": "^10.0.9",
-    "babel-plugin-module-resolver": "^3.1.1",
-    "clean-webpack-plugin": "^2.0.1",
-    "cross-env": "^5.2.0",
-    "docdash": "^1.1.0",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2",
-    "eslint": "^5.0.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-react": "^7.12.4",
-    "jsdoc": "^3.5.5",
+    "awesome-typescript-loader": "^5.2.1",
     "nodemon": "^1.18.10",
-    "react-dom": "^16.8.5",
-    "react-hot-loader": "^4.8.0",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.5.1",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.12.2",
-    "webpack-bundle-analyzer": "^3.1.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
     "prop-types": "^15.7.2",
-    "react": "^16.8.5"
+    "react": "^16.8.5",
+    "react-dom": "^16.8.6"
   }
 }

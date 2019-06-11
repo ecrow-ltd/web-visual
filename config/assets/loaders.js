@@ -2,11 +2,13 @@
  * Webpack Loaders
  */
 module.exports = {
-  babel: {
+  typescript: {
+    test: /\.tsx?$/,
+    loader: "awesome-typescript-loader"
+  },
+  sourcemap: {
+    enforce: "pre",
     test: /\.js$/,
-    exclude: /(node_modules|bower_components)/,
-    use: {
-      loader: 'babel-loader'
-    }
+    loader: "source-map-loader"
   }
 };

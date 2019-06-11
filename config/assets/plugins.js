@@ -2,17 +2,12 @@
  * Webpack plugins
  */
 
-const common = require('./common');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const common = require("./common");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = {
-  clean: new CleanWebpackPlugin({
-    cleanOnceBeforeBuildPatterns: [`${common.LIBRARY_PATH}/*`],
-    dry: false, // true = simulate file removal
-    verbose: true
-  }),
   uglifyjs: new UglifyJsPlugin({
     uglifyOptions: {
       output: {
@@ -26,7 +21,7 @@ module.exports = {
     }
   }),
   bundleAnalyzer: new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
+    analyzerMode: "static",
     reportFilename: `${common.REPORT_PATH}/bundle.html`,
     openAnalyzer: false
   })
