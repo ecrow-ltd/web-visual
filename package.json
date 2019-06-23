@@ -7,7 +7,9 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
-    "lib"
+    "dist",
+    "lib",
+    "src"
   ],
   "scripts": {
     "clean": "npm run clean:lib && npm run clean:dist",
@@ -20,6 +22,8 @@
     "build:lib": "tsc --sourceRoot ./src --outDir ./lib -d --declarationDir ./lib",
     "build:doc": "jsdoc src -c ./jsdoc.config.json",
     "start": "nodemon --exec 'yarn build:lib' --watch ./src",
+    "start:storybook": "start-storybook -p 2769",
+    "build:storybook": "build-storybook",
     "dev": "webpack --progress --colors --watch --env dev --config config/webpack.config.js",
     "repl": "node -i -e \"$(< ./lib/visual-web.js)\""
   },
@@ -39,9 +43,23 @@
   "license": "ISC",
   "homepage": "https://github.com/ecrow-ltd/visual-web#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-info": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "@types/jest": "^24.0.15",
+    "@types/storybook__react": "^4.0.2",
+    "@types/styled-components": "^4.1.16",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
+    "jest": "^24.8.0",
     "nodemon": "^1.18.10",
+    "react-docgen-typescript-loader": "^3.1.0",
     "source-map-loader": "^0.2.4",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-react": "^4.0.0",
     "typescript": "^3.5.1",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.12.2",
@@ -53,6 +71,7 @@
     "@types/react-dom": "^16.8.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
   }
 }

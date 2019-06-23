@@ -1,12 +1,12 @@
 /**
  * Requirements
  */
-const path = require('path');
+const path = require("path");
 
 /**
  * Constants
  */
-const ROOT_PATH = path.resolve('.');
+const ROOT_PATH = path.resolve(".");
 const BUILD_PATH = `${ROOT_PATH}/.build`;
 const BUNDLE_PATH = `${ROOT_PATH}/.bundle`;
 const REPORT_PATH = `${ROOT_PATH}/.reports`;

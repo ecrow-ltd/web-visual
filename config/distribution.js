@@ -1,6 +1,4 @@
 /* global __dirname, require, module*/
-
-const webpack = require("webpack");
 const common = require("./assets/common");
 const loaders = require("./assets/loaders");
 const plugins = require("./assets/plugins");
