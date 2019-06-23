@@ -18,7 +18,11 @@
     "emitDecoratorMetadata": true,
     "declarationDir": "dist",
     "outDir": "dist",
-    "types": ["react", "styled-components"]
+    "types": ["react", "styled-components"],
+    "baseUrl": ".",
+    "paths": {
+      "@local-src": ["./src"] // This mapping is relative to "baseUrl"
+    }
   },
   "include": ["src"]
 }

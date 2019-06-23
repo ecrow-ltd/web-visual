@@ -22,8 +22,8 @@
     "build:lib": "tsc --sourceRoot ./src --outDir ./lib -d --declarationDir ./lib",
     "build:doc": "jsdoc src -c ./jsdoc.config.json",
     "start": "nodemon --exec 'yarn build:lib' --watch ./src",
-    "start:storybook": "start-storybook -p 2769",
-    "build:storybook": "build-storybook",
+    "start:storybook": "start-storybook -p 2769 -c ./config/storybook",
+    "build:storybook": "build-storybook -o .build-storybook",
     "dev": "webpack --progress --colors --watch --env dev --config config/webpack.config.js",
     "repl": "node -i -e \"$(< ./lib/visual-web.js)\""
   },
