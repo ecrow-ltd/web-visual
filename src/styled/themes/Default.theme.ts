@@ -3,15 +3,15 @@ import { ITheme } from "./ITheme";
 const DefaultTheme: ITheme = {
   color: {
     background: {
-      color: "white",
-      type: "light"
+      type: "light",
+      value: "white"
     },
     button: {
-      creative: { color: "royalblue", type: "dark" },
-      destructive: { color: "firebrick", type: "dark" },
-      negative: { color: "salmon", type: "dark" },
-      neutral: { color: "grey", type: "dark" },
-      positive: { color: "dodgerblue", type: "dark" }
+      creative: { value: "dodgerblue", type: "dark" },
+      destructive: { value: "firebrick", type: "dark" },
+      negative: { value: "darkred", type: "dark" },
+      neutral: { value: "dimgrey", type: "dark" },
+      positive: { value: "royalblue", type: "dark" }
     },
     text: {
       dark: {
@@ -21,15 +21,15 @@ const DefaultTheme: ITheme = {
       },
       light: {
         negative: "lightcoral",
-        neutral: "lightgrey",
+        neutral: "ghostwhite",
         positive: "palegreen"
       }
     }
   },
   font: {
     button: {
-      family: "inherit",
-      size: "inherit",
+      family: "Roboto, Helvetica, Arial, sans-serif",
+      size: 14,
       weight: {
         bold: 700,
         light: 300,
@@ -59,7 +59,7 @@ const DefaultTheme: ITheme = {
   shape: {
     borderRadius: 4
   },
-  transitions: {
+  transition: {
     duration: {
       complex: 375,
       entering: 225,

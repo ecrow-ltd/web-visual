@@ -6,10 +6,10 @@ logs
 .firebase
 
 # Compiled versions
-lib
-dist
+.lib
+.dist
 doc
-.build-storybook
+.build
 
 # Runtime data
 pids

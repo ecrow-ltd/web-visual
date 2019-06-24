@@ -1,7 +1,7 @@
 import { create } from "@storybook/theming";
 
 export default create({
-  base: "dark",
+  base: "light",
 
   colorPrimary: "#486089",
   colorSecondary: "#203456",
@@ -13,7 +13,7 @@ export default create({
   appContentBg: "white",
 
   // Text colors
-  textColor: "white",
+  textColor: "black",
   textInverseColor: "rgba(0,0,0,0.9)",
 
   // Toolbar default and active colors
@@ -23,8 +23,8 @@ export default create({
 
   // Form colors
   // inputBg: "red",
-  //   inputBorder: "silver",
-  //   inputBorderRadius: 4,
+  // inputBorder: "silver",
+  // inputBorderRadius: 4,
   // inputTextColor: "black",
 
   brandImage: "/logo-white.png",

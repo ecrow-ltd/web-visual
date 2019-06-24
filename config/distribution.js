@@ -22,7 +22,7 @@ const config = {
   entry: `${common.ROOT_PATH}/src/index.tsx`,
   devtool: modeType ? false : "source-map",
   output: {
-    path: common.DISTRIBUTION_PATH,
+    path: `${common.ROOT_PATH}/.dist`,
     filename: outputFile + ".umd.js",
     libraryTarget: "umd"
   },

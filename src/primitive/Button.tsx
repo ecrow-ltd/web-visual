@@ -8,7 +8,7 @@ export interface IState {}
 
 class Button extends React.Component<IProps, IState> {
   public static defaultProps: IProps = {
-    variant: "default"
+    variant: "neutral"
   };
 
   /**

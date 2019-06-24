@@ -1,5 +1,5 @@
 export interface IColorType {
-  color: string;
+  value: string;
   type: string;
 }
 
@@ -44,7 +44,7 @@ export interface ITheme {
   };
   shadow: string[];
   shape: { borderRadius: number };
-  transitions: {
+  transition: {
     easing: {
       easeInOut: string;
       easeOut: string;
