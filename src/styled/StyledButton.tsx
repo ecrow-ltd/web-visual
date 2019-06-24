@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
+export interface IProps {}
+
 /**
  * Common Button Component
  */
-const Button = styled.button`
+const Button = styled.button<IProps>`
   border: none;
   border-radius: 5px;
   padding: 8px 14px;

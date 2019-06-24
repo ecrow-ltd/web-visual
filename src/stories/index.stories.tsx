@@ -3,21 +3,21 @@ import React from "react";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 // import { linkTo } from "@storybook/addon-links";
-import Button from "../styled/Button";
+import StyledButton from "../styled/StyledButton";
 // import { Welcome } from "@storybook/react/demo";
 // storiesOf("Welcome", module).add("to Storybook", () => <Welcome showApp={linkTo("RoundedButton")} />);
 
-storiesOf("Button", module)
+storiesOf("StyledButton", module)
   .add(
     "Basic",
     () => (
-      <Button
+      <StyledButton
         onClick={action("onClick")}
         onMouseEnter={action("onMouseEnter")}
         onMouseLeave={action("onMouseLeave")}
       >
-        Basic Button (for Sarah)
-      </Button>
+        Basic StyledButton
+      </StyledButton>
     ),
     {
       info: { inline: false },
@@ -26,7 +26,7 @@ storiesOf("Button", module)
   .add(
     "Emoji",
     () => (
-      <Button
+      <StyledButton
         onClick={action("onClick")}
         onMouseEnter={action("onMouseEnter")}
         onMouseLeave={action("onMouseLeave")}
@@ -34,7 +34,7 @@ storiesOf("Button", module)
         <span role="img" aria-label="so cool">
           😀 😎 👍 💯
         </span>
-      </Button>
+      </StyledButton>
     ),
     { info: { inline: false } },
   );

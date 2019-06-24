@@ -1,11 +1,16 @@
-import { withInfo } from "@storybook/addon-info";
-import { addDecorator, configure } from "@storybook/react";
+import { addParameters, configure } from "@storybook/react";
+import theme from "./theme";
 
 // automatically import all files ending in *.stories.tsx
 const req = require.context("../../src/stories", true, /.stories.tsx$/);
 
 function loadStories() {
-  addDecorator(withInfo);
+  addParameters({
+    options: {
+      panelPosition: "right",
+      theme
+    }
+  });
   req.keys().forEach(req);
 }
 
