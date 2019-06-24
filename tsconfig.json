@@ -21,7 +21,7 @@
     "types": ["react", "styled-components"],
     "baseUrl": ".",
     "paths": {
-      "@local-src": ["./src"] // This mapping is relative to "baseUrl"
+      "@localsrc": ["./src"]
     }
   },
   "include": ["src"]

@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "description": "Library of Visual Components for eCrow Ltd.",
   "private": true,
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./.lib/index.js",
+  "types": "./.lib/index.d.ts",
   "files": [
-    "dist",
-    "lib",
+    ".dist",
+    ".lib",
     "src"
   ],
   "scripts": {

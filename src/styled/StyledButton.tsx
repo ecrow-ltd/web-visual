@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
-export interface IProps {}
+export interface IProps {
+  variant: string;
+}
 
 /**
  * Common Button Component
  */
-const Button = styled.button<IProps>`
+const StyledButton = styled.button<IProps>`
   border: none;
   border-radius: 5px;
   padding: 8px 14px;
@@ -31,4 +33,4 @@ const Button = styled.button<IProps>`
   }
 `;
 
-export default Button;
+export default StyledButton;
