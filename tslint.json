@@ -1,6 +1,7 @@
 {
   "extends": ["tslint:latest", "tslint-react"],
   "rules": {
+    "no-empty": false,
     "no-empty-interface": false,
     "no-implicit-dependencies": false,
     "no-submodule-imports": false,

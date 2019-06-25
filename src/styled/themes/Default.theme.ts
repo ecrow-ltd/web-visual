@@ -6,7 +6,7 @@ const DefaultTheme: ITheme = {
       type: "light",
       value: "white"
     },
-    button: {
+    common: {
       creative: { value: "forestgreen", type: "dark" },
       destructive: { value: "firebrick", type: "dark" },
       negative: { value: "darkred", type: "dark" },
@@ -15,14 +15,18 @@ const DefaultTheme: ITheme = {
     },
     text: {
       dark: {
+        creative: "darkgreen",
+        destructive: "darkred",
         negative: "darkred",
         neutral: "dimgrey",
-        positive: "darkgreen"
+        positive: "royalblue"
       },
       light: {
-        negative: "lightcoral",
+        creative: "lightgreen",
+        destructive: "mistyrose",
+        negative: "mistyrose",
         neutral: "ghostwhite",
-        positive: "palegreen"
+        positive: "lightcyan"
       }
     }
   },

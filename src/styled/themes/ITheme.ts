@@ -1,3 +1,11 @@
+export const VARIANTS: string[] = [
+  "neutral",
+  "positive",
+  "negative",
+  "creative",
+  "destructive"
+];
+
 export interface IColorType {
   value: string;
   type: string;
@@ -5,7 +13,7 @@ export interface IColorType {
 
 export interface IColor {
   background: IColorType;
-  button: {
+  common: {
     neutral: IColorType;
     positive: IColorType;
     negative: IColorType;
@@ -17,11 +25,15 @@ export interface IColor {
       neutral: string;
       positive: string;
       negative: string;
+      creative: string;
+      destructive: string;
     };
     dark: {
       neutral: string;
       positive: string;
       negative: string;
+      creative: string;
+      destructive: string;
     };
   };
 }

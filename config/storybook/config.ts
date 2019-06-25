@@ -1,4 +1,5 @@
-import { addParameters, configure } from "@storybook/react";
+import { withInfo } from "@storybook/addon-info";
+import { addDecorator, addParameters, configure } from "@storybook/react";
 import theme from "./theme";
 
 // automatically import all files ending in *.stories.tsx

@@ -1,34 +1,51 @@
-import { select } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { boolean, select, text } from "@storybook/addon-knobs";
 import React from "react";
-import { ThemeProvider } from "styled-components";
-// import { action } from "@storybook/addon-actions";
-import Button from "../../src/primitive/Button";
+import Button, { IProps as ButtonIProps } from "../../src/primitive/Button";
 import StoryPrimitives from "./StoryPrimitives";
-
-import OthertideTheme from "../../src/styled/themes/Othertide.theme";
 
 // Variant Select
 const selectVariant = {
-  default: "neutral",
+  default: "neutral" as ButtonIProps["variant"],
   id: "COMPONENT",
   label: "variant",
-  options: ["neutral", "positive", "negative", "creative", "destructive"]
+  options: [
+    "neutral",
+    "positive",
+    "negative",
+    "creative",
+    "destructive"
+  ] as Array<ButtonIProps["variant"]>
+};
+
+// Interaction Select
+const selectInteraction = {
+  default: "normal" as ButtonIProps["interaction"],
+  id: "COMPONENT",
+  label: "interaction",
+  options: ["normal", "inversion"] as Array<ButtonIProps["interaction"]>
 };
 
 // Button Chapter
 StoryPrimitives.add("Button", () => {
   return (
-    <ThemeProvider theme={OthertideTheme}>
-      <Button
-        variant={select(
-          selectVariant.label,
-          selectVariant.options,
-          selectVariant.default,
-          selectVariant.id
-        )}
-      >
-        Button
-      </Button>
-    </ThemeProvider>
+    <Button
+      disabled={boolean("disabled", false, "COMPONENT")}
+      variant={select(
+        selectVariant.label,
+        selectVariant.options,
+        selectVariant.default,
+        selectVariant.id
+      )}
+      interaction={select(
+        selectInteraction.label,
+        selectInteraction.options,
+        selectInteraction.default,
+        selectInteraction.id
+      )}
+      onClick={action("Clicked (onClick)")}
+    >
+      {text("text", "Button", "COMPONENT")}
+    </Button>
   );
 });
