@@ -7,7 +7,7 @@ const DefaultTheme: ITheme = {
       value: "white"
     },
     button: {
-      creative: { value: "dodgerblue", type: "dark" },
+      creative: { value: "forestgreen", type: "dark" },
       destructive: { value: "firebrick", type: "dark" },
       negative: { value: "darkred", type: "dark" },
       neutral: { value: "dimgrey", type: "dark" },

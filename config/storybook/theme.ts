@@ -3,18 +3,18 @@ import { create } from "@storybook/theming";
 export default create({
   base: "light",
 
-  colorPrimary: "#486089",
-  colorSecondary: "#203456",
+  colorPrimary: "#e8edf4",
+  colorSecondary: "#486089",
 
   // UI
-  appBg: "#486089",
-  appBorderColor: "#486089",
+  appBg: "#e8edf4",
+  appBorderColor: "#e8edf4",
   appBorderRadius: 3,
   appContentBg: "white",
 
   // Text colors
-  textColor: "black",
-  textInverseColor: "rgba(0,0,0,0.9)",
+  // textColor: "black",
+  // textInverseColor: "rgba(0,0,0,0.9)",
 
   // Toolbar default and active colors
   barBg: "#d5dce8",
@@ -27,6 +27,6 @@ export default create({
   // inputBorderRadius: 4,
   // inputTextColor: "black",
 
-  brandImage: "/logo-white.png",
+  brandImage: "/logo-color.png",
   brandTitle: "My custom storybook"
 });
