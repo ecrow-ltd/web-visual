@@ -5,6 +5,7 @@ import StyledButton, {
 
 /**
  * React Props Interface
+ * @inheritdoc
  */
 export interface IProps extends StyledButtonIProps {
   /**
@@ -24,9 +25,9 @@ export interface IState {}
 export class Button extends Component<IProps, IState> {
   public static defaultProps: IProps = {
     disabled: false,
-    interaction: "normal",
+    indicate: "neutral",
     onClick: () => {},
-    variant: "neutral"
+    variant: "normal"
   };
 
   /**

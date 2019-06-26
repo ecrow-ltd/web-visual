@@ -1,17 +1,21 @@
 import styled, { CSSObject } from "styled-components";
 import DefaultTheme from "./themes/Default.theme";
-import { VARIANTS as THEME_VARIANTS } from "./themes/ITheme";
 
-export const VARIANTS = THEME_VARIANTS;
 export const INTERACTIONS: string[] = ["normal", "inversion"];
 
 export interface IProps {
-  /** Disable component */
+  /**
+   * Disable componen
+   */
   disabled: boolean;
-  /** Interaction type */
-  interaction: "normal" | "inversion";
-  /** Variant type */
-  variant: "neutral" | "positive" | "negative" | "creative" | "destructive";
+  /**
+   * Indicate type
+   */
+  indicate: "neutral" | "positive" | "negative" | "creative" | "destructive";
+  /**
+   * Variant type
+   */
+  variant: "normal" | "inversion";
 }
 
 const interactionNormal = (props: any) => {
@@ -23,24 +27,23 @@ const interactionNormal = (props: any) => {
 
     "&:active": {
       filter: "brightness(80%)",
-      transition: `filter ${props.duration}ms`
+      transform: "scale(0.95)",
+      transition: `all ${props.duration}ms`
     },
 
-    "backgroundColor": props.background.value,
+    "backgroundColor": props.background,
     "backgroundPosition": "center",
     "border": "none",
     "borderRadius": props.borderRadius,
     "boxShadow": "0 0 1px transparent",
-    "color":
-      props.background.type === "dark"
-        ? props.textColor.light
-        : props.textColor.dark,
+    "color": props.textColor[props.mode],
     "cursor": "pointer",
     "filter": "brightness(100%)",
     "fontFamily": props.fontSize,
     "fontSize": props.fontSize,
     "outline": "none",
     "padding": "6px 12px",
+    "transform": "scale(1)",
     "transition": `all ${props.duration}ms`
   };
 };
@@ -48,18 +51,16 @@ const interactionNormal = (props: any) => {
 const interactionInversion = (props: any) => {
   return {
     "&:hover": {
-      backgroundColor: props.background.value,
+      backgroundColor: props.background,
       boxShadow: "0 0 2px #999",
-      color:
-        props.background.type === "dark"
-          ? props.textColor.light
-          : props.textColor.dark,
+      color: props.textColor[props.mode],
       filter: "brightness(110%)"
     },
 
     "&:active": {
       filter: "brightness(80%)",
-      transition: `filter ${props.duration}ms`
+      transform: "scale(0.95)",
+      transition: `all ${props.duration}ms`
     },
 
     "backgroundColor": "transparent",
@@ -67,16 +68,14 @@ const interactionInversion = (props: any) => {
     "border": "none",
     "borderRadius": props.borderRadius,
     "boxShadow": "0 0 1px transparent",
-    "color":
-      props.background.type === "dark"
-        ? props.textColor.dark
-        : props.textColor.light,
+    "color": props.background,
     "cursor": "pointer",
     "filter": "brightness(100%)",
     "fontFamily": props.fontSize,
     "fontSize": props.fontSize,
     "outline": "none",
     "padding": "6px 12px",
+    "transform": "scale(1)",
     "transition": `all 375ms`
   };
 };
@@ -86,11 +85,11 @@ const interactionInversion = (props: any) => {
  */
 const StyledButton = styled.button<IProps>((props) => {
   // Extract Properties
-  const buttonProps = props.theme.color.common[props.variant];
+  const buttonColor = props.theme.color.indicate[props.indicate];
   const fontProps = props.theme.font.button;
   const disabled = props.disabled;
 
-  const disabledStyle = {
+  const disabledStyle: CSSObject = {
     opacity: 0.6,
     pointerEvents: "none",
     userSelect: "none"
@@ -98,26 +97,26 @@ const StyledButton = styled.button<IProps>((props) => {
 
   // An object of properties containing only what the button needs.
   const styleProps = {
-    background: {
-      type: buttonProps.type,
-      value: buttonProps.value
-    },
+    background: buttonColor,
     borderRadius: props.theme.shape.borderRadius,
-    duration: props.theme.transition.duration.standard,
+    duration: props.theme.transition.duration.shortest,
     fontSize: fontProps.size,
+    mode: props.theme.color.base.mode,
     textColor: {
-      dark: props.theme.color.text.dark[props.variant],
-      light: props.theme.color.text.light[props.variant]
+      dark: props.theme.color.text.dark,
+      light: props.theme.color.text.light
     }
   };
 
-  let style = {};
-  switch (props.interaction) {
+  let style: CSSObject = {
+    userSelect: "none"
+  };
+  switch (props.variant) {
     case "inversion":
-      style = interactionInversion(styleProps);
+      style = { ...style, ...interactionInversion(styleProps) };
       break;
     default:
-      style = interactionNormal(styleProps);
+      style = { ...style, ...interactionNormal(styleProps) };
   }
 
   if (disabled) {

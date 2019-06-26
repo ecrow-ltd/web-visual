@@ -5,25 +5,25 @@ import Button, { IProps as ButtonIProps } from "../../src/primitive/Button";
 import StoryPrimitives from "./StoryPrimitives";
 
 // Variant Select
-const selectVariant = {
-  default: "neutral" as ButtonIProps["variant"],
+const selectIndicate = {
+  default: "neutral" as ButtonIProps["indicate"],
   id: "COMPONENT",
-  label: "variant",
+  label: "indicate",
   options: [
     "neutral",
     "positive",
     "negative",
     "creative",
     "destructive"
-  ] as Array<ButtonIProps["variant"]>
+  ] as Array<ButtonIProps["indicate"]>
 };
 
 // Interaction Select
-const selectInteraction = {
-  default: "normal" as ButtonIProps["interaction"],
+const selectVariant = {
+  default: "normal" as ButtonIProps["variant"],
   id: "COMPONENT",
-  label: "interaction",
-  options: ["normal", "inversion"] as Array<ButtonIProps["interaction"]>
+  label: "variant",
+  options: ["normal", "inversion"] as Array<ButtonIProps["variant"]>
 };
 
 // Button Chapter
@@ -31,17 +31,17 @@ StoryPrimitives.add("Button", () => {
   return (
     <Button
       disabled={boolean("disabled", false, "COMPONENT")}
+      indicate={select(
+        selectIndicate.label,
+        selectIndicate.options,
+        selectIndicate.default,
+        selectIndicate.id
+      )}
       variant={select(
         selectVariant.label,
         selectVariant.options,
         selectVariant.default,
         selectVariant.id
-      )}
-      interaction={select(
-        selectInteraction.label,
-        selectInteraction.options,
-        selectInteraction.default,
-        selectInteraction.id
       )}
       onClick={action("Clicked (onClick)")}
     >

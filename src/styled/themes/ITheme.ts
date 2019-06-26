@@ -1,76 +1,77 @@
-export const VARIANTS: string[] = [
-  "neutral",
-  "positive",
-  "negative",
-  "creative",
-  "destructive"
-];
+import { CSSObject } from "styled-components";
 
 export interface IColorType {
-  value: string;
-  type: string;
+  readonly value: string;
+  readonly mode: string;
+}
+
+export interface IColorIndicate {
+  readonly neutral: string;
+  readonly positive: string;
+  readonly negative: string;
+  readonly creative: string;
+  readonly destructive: string;
+}
+
+export interface IColorText {
+  readonly dark: string;
+  readonly light: string;
 }
 
 export interface IColor {
-  background: IColorType;
-  common: {
-    neutral: IColorType;
-    positive: IColorType;
-    negative: IColorType;
-    creative: IColorType;
-    destructive: IColorType;
-  };
-  text: {
-    light: {
-      neutral: string;
-      positive: string;
-      negative: string;
-      creative: string;
-      destructive: string;
-    };
-    dark: {
-      neutral: string;
-      positive: string;
-      negative: string;
-      creative: string;
-      destructive: string;
-    };
-  };
+  /**
+   * The default base color for the theme.
+   */
+  base: IColorType;
+  /**
+   * The complementary color to the base color.
+   */
+  complement: IColorType;
+  /**
+   * Indication color shades should always be to be the inverse of the base color's mode.
+   * For Instance, a base in "light" mode should have dark indication colors.
+   */
+  indicate: IColorIndicate;
+  text: IColorText;
 }
 
 export interface IFont {
-  family: string;
-  size: number | string;
-  weight: {
-    light: number;
-    regular: number;
-    medium: number;
-    bold: number;
+  readonly family: string;
+  readonly size: number | string;
+  readonly weight: {
+    readonly light: number;
+    readonly regular: number;
+    readonly medium: number;
+    readonly bold: number;
   };
 }
 
 export interface ITheme {
-  color: IColor;
-  font: IFont & {
-    button: IFont;
+  readonly color: IColor;
+  readonly font: IFont & {
+    readonly button: IFont;
   };
-  shadow: string[];
-  shape: { borderRadius: number };
-  transition: {
-    easing: {
-      easeInOut: string;
-      easeOut: string;
-      easeIn: string;
-      sharp: string;
+  readonly shadow: string[];
+  readonly shape: { borderRadius: number };
+  readonly touchable: {
+    active: CSSObject;
+    hover: CSSObject;
+  };
+  readonly transition: {
+    readonly easing: {
+      readonly easeInOut: string;
+      readonly easeOut: string;
+      readonly easeIn: string;
+      readonly sharp: string;
     };
-    duration: {
-      shortest: number;
-      shorter: number;
-      short: number;
-      standard: number;
-      complex: number;
-      entering: number;
-      leaving: number;
+    readonly duration: {
+      readonly shortest: number;
+      readonly shorter: number;
+      readonly short: number;
+      readonly standard: number;
+      readonly complex: number;
+      readonly entering: number;
+      readonly leaving: number;
     };
   };
 }

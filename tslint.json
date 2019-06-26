@@ -6,6 +6,7 @@
     "no-implicit-dependencies": false,
     "no-submodule-imports": false,
     "trailing-comma": false,
-    "jsx-no-multiline-js": false
+    "jsx-no-multiline-js": false,
+    "member-ordering": true
   }
 }

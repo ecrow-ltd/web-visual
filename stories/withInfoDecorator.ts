@@ -6,6 +6,7 @@ export default withInfo({
   styles: {
     header: {
       body: {
+        fontFamily: "Roboto, Helvetica, Arial, sans-serif",
         marginBottom: 0,
         paddingBottom: 0,
         paddingTop: 0
@@ -14,7 +15,9 @@ export default withInfo({
         display: "inline",
         fontSize: "25px",
         marginBottom: 0,
-        marginRight: "20px"
+        marginRight: "20px",
+        marginTop: 0,
+        padding: 0
       },
       h2: {
         color: "#999",
@@ -25,7 +28,7 @@ export default withInfo({
       backgroundColor: "#e8edf4",
       borderRadius: 5,
       lineHeight: "2",
-      padding: "0px 10px"
+      padding: "10px 10px"
     }
   }
 });

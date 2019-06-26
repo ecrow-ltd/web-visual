@@ -2,32 +2,24 @@ import { ITheme } from "./ITheme";
 
 const DefaultTheme: ITheme = {
   color: {
-    background: {
-      type: "light",
+    base: {
+      mode: "light",
       value: "white"
     },
-    common: {
-      creative: { value: "forestgreen", type: "dark" },
-      destructive: { value: "firebrick", type: "dark" },
-      negative: { value: "darkred", type: "dark" },
-      neutral: { value: "dimgrey", type: "dark" },
-      positive: { value: "royalblue", type: "dark" }
+    complement: {
+      mode: "light",
+      value: "gainsboro"
+    },
+    indicate: {
+      creative: "forestgreen",
+      destructive: "firebrick",
+      negative: "darkred",
+      neutral: "dimgrey",
+      positive: "royalblue"
     },
     text: {
-      dark: {
-        creative: "darkgreen",
-        destructive: "darkred",
-        negative: "darkred",
-        neutral: "dimgrey",
-        positive: "royalblue"
-      },
-      light: {
-        creative: "lightgreen",
-        destructive: "mistyrose",
-        negative: "mistyrose",
-        neutral: "ghostwhite",
-        positive: "lightcyan"
-      }
+      dark: "dimgrey",
+      light: "beige"
     }
   },
   font: {
@@ -62,6 +54,17 @@ const DefaultTheme: ITheme = {
   ],
   shape: {
     borderRadius: 4
+  },
+  touchable: {
+    active: {
+      filter: "brightness(80%)",
+      transform: "scale(0.95)",
+      transition: `all 200ms`
+    },
+    hover: {
+      filter: "brightness(110%)",
+      transition: `all 200ms`
+    }
   },
   transition: {
     duration: {
