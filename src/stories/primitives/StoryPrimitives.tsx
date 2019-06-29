@@ -2,7 +2,7 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { storiesOf, StoryDecorator } from "@storybook/react";
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import OthertideTheme from "../../src/styled/themes/Othertide.theme";
+import OthertideTheme from "../../themes/Othertide.theme";
 import withInfo from "../withInfoDecorator";
 
 const withProvider: StoryDecorator = (story: any) => (

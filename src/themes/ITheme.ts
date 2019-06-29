@@ -52,8 +52,14 @@ export interface ITheme {
     readonly button: IFont;
   };
   readonly shadow: string[];
-  readonly shape: { borderRadius: number };
+  readonly shape: {
+    border: {
+      thickness: number;
+      radius: number;
+    };
+  };
   readonly touchable: {
+    disabled: CSSObject;
     active: CSSObject;
     hover: CSSObject;
   };

@@ -1,7 +1,9 @@
 import { action } from "@storybook/addon-actions";
 import { boolean, select, text } from "@storybook/addon-knobs";
 import React from "react";
-import Button, { IProps as ButtonIProps } from "../../src/primitive/Button";
+import Button, {
+  IProps as ButtonIProps
+} from "../../components/primitive/Button";
 import StoryPrimitives from "./StoryPrimitives";
 
 // Variant Select
