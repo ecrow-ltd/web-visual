@@ -1,3 +1,5 @@
+const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
+
 module.exports = ({ config }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
@@ -11,6 +13,7 @@ module.exports = ({ config }) => {
     ]
   });
 
+  config.resolve.plugins = [new TsConfigPathsPlugin()];
   config.resolve.extensions.push(".ts", ".tsx");
 
   return config;

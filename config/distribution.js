@@ -4,6 +4,7 @@ const loaders = require("./assets/loaders");
 const plugins = require("./assets/plugins");
 const argv = require("yargs").argv; // use --env with webpack 2
 const pkg = require("../package.json");
+const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
 
 let outputFile, mode, modeType;
 
@@ -31,7 +32,10 @@ const config = {
   },
   plugins: mode ? [plugins.uglifyjs] : [],
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    plugins: [
+      new TsConfigPathsPlugin()
+    ]
   },
   performance: {
     hints: false
