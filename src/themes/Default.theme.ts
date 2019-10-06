@@ -59,7 +59,7 @@ const DefaultTheme: ITheme = {
     },
     hover: {
       cursor: "pointer",
-      filter: "brightness(110%)",
+      filter: "brightness(120%)",
       transition: `all 200ms`
     }
   },

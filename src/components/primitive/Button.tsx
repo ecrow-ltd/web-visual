@@ -60,7 +60,7 @@ export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
   // Apply touchable CSS events to the button
   style["&:hover"] = {
     ...theme.touchable.hover,
-    backgroundColor: inverted ? indicateColor : "inherit"
+    backgroundColor: inverted ? indicateColor : undefined
   };
   style["&:active"] = theme.touchable.active;
 
