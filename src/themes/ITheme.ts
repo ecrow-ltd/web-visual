@@ -1,10 +1,5 @@
 import { CSSObject } from "styled-components";
 
-export interface IColorType {
-  readonly value: string;
-  readonly mode: string;
-}
-
 export interface IColorIndicate {
   readonly neutral: string;
   readonly positive: string;
@@ -13,43 +8,52 @@ export interface IColorIndicate {
   readonly destructive: string;
 }
 
-export interface IColorText {
-  readonly dark: string;
-  readonly light: string;
-}
-
 export interface IColor {
   /**
    * The default base color for the theme.
    */
-  base: IColorType;
+  base: string;
   /**
    * The complementary color to the base color.
    */
-  complement: IColorType;
+  complement: string;
   /**
-   * Indication color shades should always be to be the inverse of the base color's mode.
-   * For Instance, a base in "light" mode should have dark indication colors.
+   * Indication color shades
    */
   indicate: IColorIndicate;
-  text: IColorText;
 }
 
 export interface IFont {
   readonly family: string;
+  readonly opacity: number;
   readonly size: number | string;
-  readonly weight: {
-    readonly light: number;
-    readonly regular: number;
-    readonly medium: number;
-    readonly bold: number;
-  };
+  readonly style: string;
+  readonly color: string;
+  readonly weight: number;
+}
+
+export interface IFontOptional {
+  readonly family?: string;
+  readonly opacity?: string;
+  readonly size?: number | string;
+  readonly style?: string;
+  readonly color?: string;
+  readonly weight?: number;
 }
 
 export interface ITheme {
   readonly color: IColor;
-  readonly font: IFont & {
-    readonly button: IFont;
+  readonly font: {
+    readonly base: IFont;
+    readonly title: IFontOptional;
+    readonly subtitle: IFontOptional;
+    readonly heading1: IFontOptional;
+    readonly heading2: IFontOptional;
+    readonly heading3: IFontOptional;
+    readonly subheading: IFontOptional;
+    readonly paragraph: IFontOptional; 
+    readonly quote: IFontOptional;
+    readonly small: IFontOptional;
   };
   readonly shadow: string[];
   readonly shape: {
@@ -64,10 +68,10 @@ export interface ITheme {
     hover: CSSObject;
   };
   readonly transition: {
-    readonly easing: {
-      readonly easeInOut: string;
-      readonly easeOut: string;
-      readonly easeIn: string;
+    readonly ease: {
+      readonly inOut: string;
+      readonly out: string;
+      readonly in: string;
       readonly sharp: string;
     };
     readonly duration: {
@@ -80,4 +84,8 @@ export interface ITheme {
       readonly leaving: number;
     };
   };
+}
+
+export interface IPropsTheme {
+  theme: ITheme
 }

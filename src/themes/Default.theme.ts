@@ -2,45 +2,34 @@ import { ITheme } from "./ITheme";
 
 const DefaultTheme: ITheme = {
   color: {
-    base: {
-      mode: "light",
-      value: "white"
-    },
-    complement: {
-      mode: "light",
-      value: "gainsboro"
-    },
+    base: "white",
+    complement: "gainsboro",
     indicate: {
       creative: "forestgreen",
       destructive: "firebrick",
       negative: "darkred",
       neutral: "dimgrey",
       positive: "royalblue"
-    },
-    text: {
-      dark: "dimgrey",
-      light: "white"
     }
   },
   font: {
-    button: {
+    base: {
       family: "Roboto, Helvetica, Arial, sans-serif",
-      size: 14,
-      weight: {
-        bold: 700,
-        light: 300,
-        medium: 500,
-        regular: 400
-      }
+      color: "black",
+      opacity: 1,
+      size: "0.9125rem",
+      style: "normal",
+      weight: 400
     },
-    family: "Roboto, Helvetica, Arial, sans-serif",
-    size: 14,
-    weight: {
-      bold: 700,
-      light: 300,
-      medium: 500,
-      regular: 400
-    }
+    title: {},
+    subtitle: {},
+    heading1: {},
+    heading2: {},
+    heading3: {},
+    subheading: {},
+    paragraph: {},
+    quote: {},
+    small: {}
   },
   shadow: [
     "0 0 0 transparent",
@@ -84,10 +73,10 @@ const DefaultTheme: ITheme = {
       shortest: 150,
       standard: 300
     },
-    easing: {
-      easeIn: "cubic-bezier(0.4, 0, 1, 1)",
-      easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
-      easeOut: "cubic-bezier(0.0, 0, 0.2, 1)",
+    ease: {
+      in: "cubic-bezier(0.4, 0, 1, 1)",
+      inOut: "cubic-bezier(0.4, 0, 0.2, 1)",
+      out: "cubic-bezier(0.0, 0, 0.2, 1)",
       sharp: "cubic-bezier(0.4, 0, 0.6, 1)"
     }
   }

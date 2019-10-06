@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled, { CSSObject } from "styled-components";
+import { IPropsTheme } from "@themes/ITheme";
 
 export interface IProps {
   /**
@@ -26,7 +27,7 @@ export interface IState {}
 /**
  * Styling for a button element.
  */
-export const Styled = styled.button<IProps>((props) => {
+export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
   // Extract the theme and component properties.
   const { theme, disabled, indicate, variant } = props;
 
@@ -36,9 +37,8 @@ export const Styled = styled.button<IProps>((props) => {
   // Get the indicate color from the theme.
   const indicateColor = theme.color.indicate[indicate];
 
-  // Get the text color influenced on the theme by the base color mode.
-  const textColorMode = inverted ? "dark" : "light";
-  const textColor = inverted ? indicateColor : theme.color.text[textColorMode];
+  // Get the text color.
+  const textColor = theme.font.base.color;
 
   // Declare a mutable styling for this component.
   let style: CSSObject = {
@@ -58,7 +58,10 @@ export const Styled = styled.button<IProps>((props) => {
   };
 
   // Apply touchable CSS events to the button
-  style["&:hover"] = theme.touchable.hover;
+  style["&:hover"] = {
+    ...theme.touchable.hover,
+    backgroundColor: inverted ? indicateColor : "inherit"
+  };
   style["&:active"] = theme.touchable.active;
 
   // If disabled is applied, assign the disabled theme properties to the style.

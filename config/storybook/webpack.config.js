@@ -1,3 +1,4 @@
+var webpack = require("webpack");
 const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
 
 module.exports = ({ config }) => {
@@ -14,6 +15,7 @@ module.exports = ({ config }) => {
   });
 
   config.resolve.plugins = [new TsConfigPathsPlugin()];
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
   config.resolve.extensions.push(".ts", ".tsx");
 
   return config;

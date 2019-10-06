@@ -19,9 +19,10 @@
     "declarationDir": ".dist",
     "outDir": ".dist",
     "types": ["react", "styled-components"],
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@localsrc": ["./src"]
+      "@src/*": ["src/*"],
+      "@themes/*": ["src/themes/*"]
     }
   },
   "include": ["src"]
