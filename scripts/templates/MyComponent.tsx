@@ -8,14 +8,14 @@ export interface IState {}
 /**
  * A component
  */
-class $NAME_COMPONENT extends Component<IProps, IState> {
+class COMPONENT_NAME extends Component<IProps, IState> {
   public static propTypes = {};
 
   public static defaultProps = {};
 
   public render() {
-    return <div {...this.props} />;
+    return <div {...this.props}>Hello World</div>;
   }
 }
 
-export default $NAME_COMPONENT;
+export default COMPONENT_NAME;
