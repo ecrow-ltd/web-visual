@@ -3,7 +3,7 @@ import { boolean, select, text } from "@storybook/addon-knobs";
 import React from "react";
 import Button, {
   IProps as ButtonIProps
-} from "../../components/primitive/Button";
+} from "../../components/primitives/Button";
 import StoryPrimitives from "./StoryPrimitives";
 
 // Variant Select
