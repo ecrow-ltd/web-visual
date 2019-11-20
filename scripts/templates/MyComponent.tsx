@@ -8,7 +8,7 @@ export interface IState {}
 /**
  * A component
  */
-class MyComponent extends Component<IProps, IState> {
+class $NAME_COMPONENT extends Component<IProps, IState> {
   public static propTypes = {};
 
   public static defaultProps = {};
@@ -18,4 +18,4 @@ class MyComponent extends Component<IProps, IState> {
   }
 }
 
-export default MyComponent;
+export default $NAME_COMPONENT;

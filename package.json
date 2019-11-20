@@ -25,6 +25,7 @@
     "start": "npm run start:storybook",
     "start:lib": "nodemon --exec 'yarn build:lib' --watch ./src",
     "start:storybook": "start-storybook -p 2769 -s ./public -c ./config/storybook",
+    "new": "node ./scripts/new.js",
     "dev": "webpack --progress --colors --watch --env dev --config config/webpack.config.js",
     "repl": "node -i -e \"$(< ./lib/visual-web.js)\""
   },
