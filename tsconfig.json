@@ -22,7 +22,8 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"],
-      "@themes/*": ["src/themes/*"]
+      "@themes/*": ["src/themes/*"],
+      "@stories/*": ["src/stories/*"]
     }
   },
   "include": ["src"]

@@ -27,6 +27,6 @@ export default create({
   // inputBorderRadius: 4,
   // inputTextColor: "black",
 
-  brandImage: "/logo-color.png",
+  // brandImage: "/logo-color.png",
   brandTitle: "My custom storybook"
 });

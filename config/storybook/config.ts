@@ -2,8 +2,8 @@ import { setDefaults as setInfoAddonDefaults, withInfo } from '@storybook/addon-
 import { addDecorator, addParameters, configure } from "@storybook/react";
 import theme from "./theme";
 
-// automatically import all files ending in *.stories.tsx
-const req = require.context("../../src/stories", true, /.stories.tsx$/);
+// automatically import all files ending in *.chapter.tsx
+const req = require.context("../../src/components", true, /.chapter.tsx$/);
 
 function loadStories() {
   addParameters({

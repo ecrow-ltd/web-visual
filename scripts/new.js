@@ -19,7 +19,8 @@ const PATH_COMPONENTS = `${PATH_ROOT}/src/components`;
 // Array of template files
 const templateFiles = ['MyComponent.tsx', 'MyComponent.test.tsx', 'MyComponent.chapter.tsx'];
 const templateReplaceString = {
-    'componentName': 'COMPONENT_NAME'
+    'componentName': 'COMPONENT_NAME',
+    'storyName': 'STORY_NAME'
 }
 
 // Array of allowable component types
@@ -55,6 +56,7 @@ if (!typesAllowed.includes(type)) {
 if (type === 'primitive') {
     templateFiles[0] = 'MyComponentStyled.tsx';
 }
+const STORY_NAME = type.charAt(0).toUpperCase() + type.slice(1);
 
 /**
  * FILE CREATION
@@ -83,7 +85,13 @@ for (var i = 0; i < templateFiles.length; i++) {
 
     // Replace the content of the files with values that match the component's name.
     const fileContents = fs.readFileSync(fullFilePath, { encoding: 'utf8' });
-    const replaceNameRegex = new RegExp(`${templateReplaceString.componentName}`, 'g');
-    const newFileContents = fileContents.replace(replaceNameRegex, name);
+    const replaceComponentName = new RegExp(`${templateReplaceString.componentName}`, 'g');
+    const replaceStoryName = new RegExp(`${templateReplaceString.storyName}`, 'g');
+    var newFileContents = fileContents;
+    newFileContents = newFileContents.replace(replaceComponentName, name);
+    newFileContents = newFileContents.replace(replaceStoryName, STORY_NAME);
     fs.writeFileSync(fullFilePath, newFileContents, { encoding: 'utf8' });
 }
+
+console.log('Your new component has been create:', PATH_COMPONENTS_TYPE_NAME);
+return 0;

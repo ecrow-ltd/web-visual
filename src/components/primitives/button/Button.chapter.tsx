@@ -3,8 +3,8 @@ import { boolean, select, text } from "@storybook/addon-knobs";
 import React from "react";
 import Button, {
   IProps as ButtonIProps
-} from "../../components/primitives/Button";
-import StoryPrimitives from "./StoryPrimitives";
+} from "./Button";
+import PrimitiveStory from "@stories/Primitive.story";
 
 // Variant Select
 const selectIndicate = {
@@ -29,7 +29,7 @@ const selectVariant = {
 };
 
 // Button Chapter
-StoryPrimitives.add("Button", () => {
+PrimitiveStory.add("Button", () => {
   return (
     <Button
       disabled={boolean("disabled", false, "COMPONENT")}
