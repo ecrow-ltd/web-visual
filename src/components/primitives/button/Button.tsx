@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled, { CSSObject } from "styled-components";
 import { IPropsTheme } from "@themes/ITheme";
+import DefaultTheme from "@themes/Default.theme";
 
 export interface IProps {
   /**
@@ -29,7 +30,8 @@ export interface IState {}
  */
 export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
   // Extract the theme and component properties.
-  const { theme, disabled, indicate, variant } = props;
+  const { disabled, indicate, variant } = props;
+  const theme = props.theme || DefaultTheme;
 
   // Store a boolean indicating if the button varient should be inverted.
   const inverted = variant === "inversion";
