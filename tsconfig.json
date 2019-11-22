@@ -18,7 +18,7 @@
     "emitDecoratorMetadata": true,
     "declarationDir": ".dist",
     "outDir": ".dist",
-    "types": ["react", "styled-components"],
+    "types": ["react", "styled-components", "jest"],
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"],

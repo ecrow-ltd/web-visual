@@ -13,11 +13,14 @@ const REPORT = `${ROOT}/.reports`;
 const LIBRARY = `${ROOT}/.lib`;
 const DISTRIBUTION = `${ROOT}/.dist`;
 
+const SOURCE = `${ROOT}/src`
+
 module.exports = {
   ROOT,
   BUILD,
   BUNDLE,
   REPORT,
   LIBRARY,
-  DISTRIBUTION
+  DISTRIBUTION,
+  SOURCE
 };
