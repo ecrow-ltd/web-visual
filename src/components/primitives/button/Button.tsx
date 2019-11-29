@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import styled, { CSSObject } from "styled-components";
-import { IPropsTheme } from "@themes/ITheme";
-import DefaultTheme from "@themes/Default.theme";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled, { CSSObject } from 'styled-components';
+import { IPropsTheme } from '@themes/ITheme';
+import DefaultTheme from '@themes/Default.theme';
 
 export interface IProps {
   /**
@@ -12,11 +12,11 @@ export interface IProps {
   /**
    * Indicate type
    */
-  indicate: "neutral" | "positive" | "negative" | "creative" | "destructive";
+  indicate: 'neutral' | 'positive' | 'negative' | 'creative' | 'destructive';
   /**
    * Variant type
    */
-  variant: "normal" | "inversion";
+  variant: 'normal' | 'inversion';
   /**
    * Callback when the button is clicked.
    */
@@ -34,37 +34,35 @@ export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
   const theme = props.theme || DefaultTheme;
 
   // Store a boolean indicating if the button varient should be inverted.
-  const inverted = variant === "inversion";
+  const inverted = variant === 'inversion';
 
   // Get the indicate color from the theme.
   const indicateColor = theme.color.indicate[indicate];
 
   // Get the text color.
-  const textColor = theme.font.base.color;
+  const text = {...theme.font.base, ...theme.font.button};
 
   // Declare a mutable styling for this component.
   let style: CSSObject = {
-    backgroundColor: inverted ? "transparent" : indicateColor,
-    backgroundPosition: "center",
-    border: "none",
+    backgroundColor: inverted ? 'transparent' : indicateColor,
+    backgroundPosition: 'center',
+    border: 'none',
     borderRadius: theme.shape.border.radius,
     boxShadow: theme.shadow[0],
-    color: textColor,
-    filter: "brightness(100%)",
-    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-    fontSize: 12,
-    outline: "none",
-    padding: "6px 12px",
-    transform: "scale(1)",
+    filter: 'brightness(100%)',
+    outline: 'none',
+    padding: '6px 12px',
+    transform: 'scale(1)',
     transition: `all ${theme.transition.duration.complex}ms`
   };
+  style = {...style, ...text};
 
   // Apply touchable CSS events to the button
-  style["&:hover"] = {
+  style['&:hover'] = {
     ...theme.touchable.hover,
     backgroundColor: inverted ? indicateColor : undefined
   };
-  style["&:active"] = theme.touchable.active;
+  style['&:active'] = theme.touchable.active;
 
   // If disabled is applied, assign the disabled theme properties to the style.
   if (disabled) {
@@ -81,21 +79,21 @@ class Button extends Component<IProps, IState> {
   public static propTypes = {
     disabled: PropTypes.bool,
     indicate: PropTypes.oneOf([
-      "neutral",
-      "positive",
-      "negative",
-      "creative",
-      "destructive"
+      'neutral',
+      'positive',
+      'negative',
+      'creative',
+      'destructive'
     ]),
     onClick: PropTypes.func,
-    variant: PropTypes.oneOf(["normal", "inversion"])
+    variant: PropTypes.oneOf(['normal', 'inversion'])
   };
 
   public static defaultProps = {
     disabled: false,
-    indicate: "neutral",
+    indicate: 'neutral',
     onClick: () => {},
-    variant: "normal"
+    variant: 'normal'
   };
 
   public render() {

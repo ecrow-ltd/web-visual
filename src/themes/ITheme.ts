@@ -1,4 +1,4 @@
-import { CSSObject } from "styled-components";
+import { CSSObject } from 'styled-components';
 
 export interface IColorIndicate {
   readonly neutral: string;
@@ -45,13 +45,14 @@ export interface ITheme {
   readonly color: IColor;
   readonly font: {
     readonly base: IFont;
+    readonly button: IFontOptional;
     readonly title: IFontOptional;
     readonly subtitle: IFontOptional;
     readonly heading1: IFontOptional;
     readonly heading2: IFontOptional;
     readonly heading3: IFontOptional;
     readonly subheading: IFontOptional;
-    readonly paragraph: IFontOptional; 
+    readonly paragraph: IFontOptional;
     readonly quote: IFontOptional;
     readonly small: IFontOptional;
   };

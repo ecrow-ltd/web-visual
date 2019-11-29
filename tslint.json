@@ -5,8 +5,9 @@
     "no-empty-interface": false,
     "no-implicit-dependencies": false,
     "no-submodule-imports": false,
-    "trailing-comma": false,
+    "trailing-comma": true,
     "jsx-no-multiline-js": false,
-    "member-ordering": true
+    "member-ordering": true,
+    "quotemark": [true, "single", "jsx-double"]
   }
 }

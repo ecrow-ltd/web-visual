@@ -1,5 +1,5 @@
-import DefaultTheme from "./Default.theme";
-import { ITheme } from "./ITheme";
+import DefaultTheme from './Default.theme';
+import { ITheme } from './ITheme';
 
 const OthertideTheme: ITheme = {
   ...DefaultTheme

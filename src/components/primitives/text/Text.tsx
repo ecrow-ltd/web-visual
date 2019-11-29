@@ -4,7 +4,20 @@ import styled, { CSSObject } from 'styled-components';
 import { IPropsTheme, ITheme } from '@themes/ITheme';
 import DefaultTheme from '@themes/Default.theme';
 
-export interface IProps {}
+export interface IProps {
+  variant:
+    | 'base'
+    | 'button'
+    | 'title'
+    | 'subtitle'
+    | 'heading1'
+    | 'heading2'
+    | 'heading3'
+    | 'subheading'
+    | 'paragraph'
+    | 'quote'
+    | 'small';
+}
 
 export interface IState {}
 
@@ -12,11 +25,11 @@ export interface IState {}
  * Styling for a component.
  */
 export const Styled = styled.div<IProps>((props: IProps & IPropsTheme) => {
-  // Use the provided theme object or set it to the default.
   const theme: ITheme = props.theme || DefaultTheme;
+  const { variant } = props;
 
   // Styling for this component.
-  let style: CSSObject = {};
+  let style: CSSObject = { ...theme.font.base, ...theme.font[variant] };
 
   return style;
 });
@@ -24,14 +37,16 @@ export const Styled = styled.div<IProps>((props: IProps & IPropsTheme) => {
 /**
  * The component
  */
-class COMPONENT_NAME extends Component<IProps, IState> {
+class Text extends Component<IProps, IState> {
   public static propTypes = {};
 
-  public static defaultProps = {};
+  public static defaultProps = {
+    variant: 'base',
+  };
 
   public render() {
-    return <Styled {...this.props}>Hello World</Styled>;
+    return <Styled {...this.props}>{this.props.children}</Styled>;
   }
 }
 
-export default COMPONENT_NAME;
+export default Text;
