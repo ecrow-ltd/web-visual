@@ -88,5 +88,5 @@ export interface ITheme {
 }
 
 export interface IPropsTheme {
-  theme: ITheme
+  theme: ITheme;
 }

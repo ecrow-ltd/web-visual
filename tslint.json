@@ -7,7 +7,12 @@
     "no-submodule-imports": false,
     "trailing-comma": true,
     "jsx-no-multiline-js": false,
-    "member-ordering": true,
+    "member-ordering": [
+      true,
+      {
+        "order": "fields-first"
+      }
+    ],
     "quotemark": [true, "single", "jsx-double"]
   }
 }

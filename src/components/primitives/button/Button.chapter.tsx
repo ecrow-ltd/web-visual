@@ -1,8 +1,8 @@
+import PrimitiveStory from '@stories/Primitive.story';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';
 import Button, { IProps as ButtonIProps } from './Button';
-import PrimitiveStory from '@stories/Primitive.story';
 
 // Indication Select
 const selectIndicate = {
@@ -14,8 +14,8 @@ const selectIndicate = {
     'positive',
     'negative',
     'creative',
-    'destructive'
-  ] as Array<ButtonIProps['indicate']>
+    'destructive',
+  ] as Array<ButtonIProps['indicate']>,
 };
 
 // Variant Select
@@ -23,7 +23,7 @@ const selectVariant = {
   default: 'normal' as ButtonIProps['variant'],
   id: 'COMPONENT',
   label: 'variant',
-  options: ['normal', 'inversion'] as Array<ButtonIProps['variant']>
+  options: ['normal', 'inversion'] as Array<ButtonIProps['variant']>,
 };
 
 // Button Chapter
@@ -35,13 +35,13 @@ PrimitiveStory.add('Button', () => {
         selectIndicate.label,
         selectIndicate.options,
         selectIndicate.default,
-        selectIndicate.id
+        selectIndicate.id,
       )}
       variant={select(
         selectVariant.label,
         selectVariant.options,
         selectVariant.default,
-        selectVariant.id
+        selectVariant.id,
       )}
       onClick={action('Clicked (onClick)')}
     >

@@ -1,8 +1,8 @@
+import DefaultTheme from '@themes/Default.theme';
+import { IPropsTheme, ITheme } from '@themes/ITheme';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { CSSObject } from 'styled-components';
-import { IPropsTheme, ITheme } from '@themes/ITheme';
-import DefaultTheme from '@themes/Default.theme';
 
 export interface IProps {
   variant:
@@ -29,7 +29,7 @@ export const Styled = styled.div<IProps>((props: IProps & IPropsTheme) => {
   const { variant } = props;
 
   // Styling for this component.
-  let style: CSSObject = { ...theme.font.base, ...theme.font[variant] };
+  const style: CSSObject = { ...theme.font.base, ...theme.font[variant] };
 
   return style;
 });

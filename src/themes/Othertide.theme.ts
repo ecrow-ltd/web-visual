@@ -2,7 +2,7 @@ import DefaultTheme from './Default.theme';
 import { ITheme } from './ITheme';
 
 const OthertideTheme: ITheme = {
-  ...DefaultTheme
+  ...DefaultTheme,
 };
 
 export default OthertideTheme;

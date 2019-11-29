@@ -1,8 +1,8 @@
+import DefaultTheme from '@themes/Default.theme';
+import { IPropsTheme } from '@themes/ITheme';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { CSSObject } from 'styled-components';
-import { IPropsTheme } from '@themes/ITheme';
-import DefaultTheme from '@themes/Default.theme';
 
 export interface IProps {
   /**
@@ -40,7 +40,7 @@ export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
   const indicateColor = theme.color.indicate[indicate];
 
   // Get the text color.
-  const text = {...theme.font.base, ...theme.font.button};
+  const text = { ...theme.font.base, ...theme.font.button };
 
   // Declare a mutable styling for this component.
   let style: CSSObject = {
@@ -53,14 +53,14 @@ export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
     outline: 'none',
     padding: '6px 12px',
     transform: 'scale(1)',
-    transition: `all ${theme.transition.duration.complex}ms`
+    transition: `all ${theme.transition.duration.complex}ms`,
   };
-  style = {...style, ...text};
+  style = { ...style, ...text };
 
   // Apply touchable CSS events to the button
   style['&:hover'] = {
     ...theme.touchable.hover,
-    backgroundColor: inverted ? indicateColor : undefined
+    backgroundColor: inverted ? indicateColor : undefined,
   };
   style['&:active'] = theme.touchable.active;
 
@@ -83,17 +83,17 @@ class Button extends Component<IProps, IState> {
       'positive',
       'negative',
       'creative',
-      'destructive'
+      'destructive',
     ]),
     onClick: PropTypes.func,
-    variant: PropTypes.oneOf(['normal', 'inversion'])
+    variant: PropTypes.oneOf(['normal', 'inversion']),
   };
 
   public static defaultProps = {
     disabled: false,
     indicate: 'neutral',
     onClick: () => {},
-    variant: 'normal'
+    variant: 'normal',
   };
 
   public render() {

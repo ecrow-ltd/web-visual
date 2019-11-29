@@ -22,7 +22,7 @@
     "build:lib": "tsc --sourceRoot ./src --outDir ./.lib -d --declarationDir ./.lib",
     "build:storybook": "build-storybook -c ./config/storybook -s ./public -o .build",
     "build:doc": "jsdoc src -c ./jsdoc.config.json",
-    "lint": "tslint ./src",
+    "lint": "tslint ./src/**/*.ts{,x}",
     "start": "npm run start:storybook",
     "start:lib": "nodemon --exec 'yarn build:lib' --watch ./src",
     "start:storybook": "start-storybook -p 2769 -s ./public -c ./config/storybook",
