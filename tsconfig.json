@@ -22,9 +22,10 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"],
-      "@themes/*": ["src/themes/*"],
+      "@attire/*": ["src/attire/*"],
       "@stories/*": ["src/stories/*"],
-      "@primitives/*": ["src/components/primitives/*"]
+      "@primitives/*": ["src/components/primitives/*"],
+      "@providers/*": ["src/providers/*"]
     }
   },
   "include": ["src"]

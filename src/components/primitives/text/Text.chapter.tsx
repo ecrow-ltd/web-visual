@@ -18,7 +18,6 @@ const selectVariant = {
   label: 'variant',
   options: [
     'base',
-    'button',
     'title',
     'subtitle',
     'heading1',

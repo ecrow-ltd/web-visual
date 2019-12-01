@@ -1,9 +1,11 @@
+import DefaultAttire from '@attire/default';
+import { IAttireProps } from '@attire/IAttire';
+import { ITheme, IThemeProps } from '@attire/ITheme';
+import Box from '@primitives/box';
 import Text from '@primitives/text';
-import DefaultTheme from '@themes/Default.theme';
-import { IPropsTheme, ITheme } from '@themes/ITheme';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import styled, { CSSObject } from 'styled-components';
+import React, { PureComponent } from 'react';
+import styled, { CSSObject, ThemeProvider } from 'styled-components';
 
 export interface IProps {
   /**
@@ -11,7 +13,7 @@ export interface IProps {
    */
   disabled: boolean;
   /**
-   * Indicate type
+   * Indicates a type of behavior
    */
   indicate: 'neutral' | 'positive' | 'negative' | 'creative' | 'destructive';
   /**
@@ -29,21 +31,19 @@ export interface IState {}
 /**
  * Styling for a button element.
  */
-export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
+export const Styled = styled.button<IProps>((props: IProps & IThemeProps) => {
   // Extract the theme and component properties.
-  const { disabled, indicate, variant } = props;
-  const theme: ITheme = props.theme || DefaultTheme;
+  const { theme, disabled, indicate, variant } = props;
 
   // Store a boolean indicating if the button varient should be inverted.
   const inverted = variant === 'inversion';
 
   // Get the indicate color from the theme.
-  const indicateColor = theme.color.indicate[indicate];
+  const indicateColor = theme.color.background;
 
   // Declare a mutable styling for this component.
   let style: CSSObject = {
-    backgroundColor: inverted ? 'transparent' : indicateColor,
-    backgroundPosition: 'center',
+    backgroundColor: theme.color.background,
     border: 'none',
     borderRadius: theme.shape.border.radius,
     boxShadow: theme.shadow[0],
@@ -68,14 +68,10 @@ export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
   return style;
 });
 
-Styled.defaultProps = {
-  theme: DefaultTheme,
-};
-
 /**
  * A standard button component.
  */
-class Button extends Component<IProps, IState> {
+class Button extends PureComponent<IProps, IState> {
   public static propTypes = {
     disabled: PropTypes.bool,
     indicate: PropTypes.oneOf([
@@ -97,11 +93,15 @@ class Button extends Component<IProps, IState> {
   };
 
   public render() {
-    const { children, ...props } = this.props;
+    const props: IProps & IAttireProps = this.props as IProps & IAttireProps;
+    const attire = props.attire ? props.attire : DefaultAttire;
+
     return (
-      <Styled {...props}>
-        <Text children={children} variant="button" />
-      </Styled>
+      <ThemeProvider theme={attire[props.indicate]}>
+        <Styled {...props}>
+          <Text children={this.props.children} variant="base" />
+        </Styled>
+      </ThemeProvider>
     );
   }
 }

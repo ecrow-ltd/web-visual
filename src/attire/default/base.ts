@@ -1,29 +1,17 @@
-import { ITheme } from './ITheme';
+import { ITheme } from '@attire/ITheme';
 
-const DefaultTheme: ITheme = {
+const base: ITheme = {
   color: {
-    base: 'white',
-    complement: 'gainsboro',
-    indicate: {
-      creative: 'forestgreen',
-      destructive: 'firebrick',
-      negative: 'darkred',
-      neutral: 'dimgrey',
-      positive: 'royalblue',
-    },
+    background: 'white',
+    font: 'black',
   },
   font: {
     base: {
-      color: 'black',
       fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
       fontSize: '0.9125rem',
       fontStyle: 'normal',
       fontWeight: 400,
       opacity: 1,
-    },
-    button: {
-      color: 'white',
-      fontSize: '0.8125rem',
     },
     heading1: {
       fontSize: '1.6rem',
@@ -105,4 +93,4 @@ const DefaultTheme: ITheme = {
   },
 };
 
-export default DefaultTheme;
+export default base;

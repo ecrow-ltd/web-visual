@@ -11,6 +11,7 @@ module.exports = {
   moduleNameMapper: {
     '^@themes/(.*)$': '<rootDir>/src/themes/$1',
     '^@primitives/(.*)$': '<rootDir>/src/components/primitives/$1',
+    '^@context/(.*)$': '<rootDir>/src/context/$1',
   },
   verbose: false,
 };

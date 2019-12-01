@@ -10,17 +10,13 @@ export interface IColorIndicate {
 
 export interface IColor {
   /**
-   * The default base color for the theme.
+   * The background color for the theme.
    */
-  base: string;
+  background: string;
   /**
-   * The complementary color to the base color.
+   * The font color for the theme.
    */
-  complement: string;
-  /**
-   * Indication color shades
-   */
-  indicate: IColorIndicate;
+  font: string;
 }
 
 export interface IFont {
@@ -28,7 +24,6 @@ export interface IFont {
   readonly opacity: number;
   readonly fontSize: number | string;
   readonly fontStyle: string;
-  readonly color: string;
   readonly fontWeight: number;
 }
 
@@ -37,7 +32,6 @@ export interface IFontOptional {
   readonly opacity?: number;
   readonly fontSize?: number | string;
   readonly fontStyle?: string;
-  readonly color?: string;
   readonly fontWeight?: number;
 }
 
@@ -45,7 +39,6 @@ export interface ITheme {
   readonly color: IColor;
   readonly font: {
     readonly base: IFont;
-    readonly button: IFontOptional;
     readonly title: IFontOptional;
     readonly subtitle: IFontOptional;
     readonly heading1: IFontOptional;
@@ -87,6 +80,6 @@ export interface ITheme {
   };
 }
 
-export interface IPropsTheme {
-  theme: ITheme;
+export interface IThemeProps {
+  readonly theme: ITheme;
 }

@@ -1,5 +1,5 @@
-import DefaultTheme from '@themes/Default.theme';
-import { IPropsTheme, ITheme } from '@themes/ITheme';
+import DefaultAttire from '@attire/default';
+import { ITheme, IThemeProps } from '@attire/ITheme';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -10,7 +10,6 @@ export interface IProps {
    */
   variant:
     | 'base'
-    | 'button'
     | 'title'
     | 'subtitle'
     | 'heading1'
@@ -27,13 +26,14 @@ export interface IState {}
 /**
  * Styling for a component.
  */
-export const Styled = styled.div<IProps>((props: IProps & IPropsTheme) => {
+export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
   const { theme, variant } = props;
 
   // Styling for this component.
   const style: CSSObject = {
     ...theme.font.base,
     ...theme.font[variant],
+    color: theme.color.font,
     transition: `all ${theme.transition.duration.complex}ms`,
   };
 
@@ -41,14 +41,27 @@ export const Styled = styled.div<IProps>((props: IProps & IPropsTheme) => {
 });
 
 Styled.defaultProps = {
-  theme: DefaultTheme,
+  theme: DefaultAttire.base,
 };
 
 /**
  * The component
  */
 class Text extends Component<IProps, IState> {
-  public static propTypes = {};
+  public static propTypes = {
+    variant: PropTypes.oneOf([
+      'base',
+      'title',
+      'subtitle',
+      'heading1',
+      'heading2',
+      'heading3',
+      'subheading',
+      'paragraph',
+      'quote',
+      'small',
+    ]),
+  };
 
   public static defaultProps = {
     variant: 'base',
