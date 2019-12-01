@@ -1,5 +1,6 @@
+import Text from '@primitives/text';
 import DefaultTheme from '@themes/Default.theme';
-import { IPropsTheme } from '@themes/ITheme';
+import { IPropsTheme, ITheme } from '@themes/ITheme';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -16,7 +17,7 @@ export interface IProps {
   /**
    * Variant type
    */
-  variant: 'normal' | 'inversion';
+  variant: 'normal' | 'tiny' | 'inversion';
   /**
    * Callback when the button is clicked.
    */
@@ -31,16 +32,13 @@ export interface IState {}
 export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
   // Extract the theme and component properties.
   const { disabled, indicate, variant } = props;
-  const theme = props.theme || DefaultTheme;
+  const theme: ITheme = props.theme || DefaultTheme;
 
   // Store a boolean indicating if the button varient should be inverted.
   const inverted = variant === 'inversion';
 
   // Get the indicate color from the theme.
   const indicateColor = theme.color.indicate[indicate];
-
-  // Get the text color.
-  const text = { ...theme.font.base, ...theme.font.button };
 
   // Declare a mutable styling for this component.
   let style: CSSObject = {
@@ -52,10 +50,8 @@ export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
     filter: 'brightness(100%)',
     outline: 'none',
     padding: '6px 12px',
-    transform: 'scale(1)',
     transition: `all ${theme.transition.duration.complex}ms`,
   };
-  style = { ...style, ...text };
 
   // Apply touchable CSS events to the button
   style['&:hover'] = {
@@ -71,6 +67,10 @@ export const Styled = styled.button<IProps>((props: IProps & IPropsTheme) => {
 
   return style;
 });
+
+Styled.defaultProps = {
+  theme: DefaultTheme,
+};
 
 /**
  * A standard button component.
@@ -97,7 +97,12 @@ class Button extends Component<IProps, IState> {
   };
 
   public render() {
-    return <Styled {...this.props} />;
+    const { children, ...props } = this.props;
+    return (
+      <Styled {...props}>
+        <Text children={children} variant="button" />
+      </Styled>
+    );
   }
 }
 

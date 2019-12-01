@@ -41,10 +41,9 @@ PrimitiveStory.add('Text', () => {
         selectVariant.label,
         selectVariant.options,
         selectVariant.default,
-        selectVariant.id,
       )}
     >
-      Some Sample Text
+      {text('Text', 'Some Sample Text')}
     </Text>
   );
 });

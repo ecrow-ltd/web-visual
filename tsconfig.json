@@ -23,7 +23,8 @@
     "paths": {
       "@src/*": ["src/*"],
       "@themes/*": ["src/themes/*"],
-      "@stories/*": ["src/stories/*"]
+      "@stories/*": ["src/stories/*"],
+      "@primitives/*": ["src/components/primitives/*"]
     }
   },
   "include": ["src"]

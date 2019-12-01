@@ -15,25 +15,44 @@ const DefaultTheme: ITheme = {
   font: {
     base: {
       color: 'black',
-      family: 'Roboto, Helvetica, Arial, sans-serif',
+      fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+      fontSize: '0.9125rem',
+      fontStyle: 'normal',
+      fontWeight: 400,
       opacity: 1,
-      size: '1rem',
-      style: 'normal',
-      weight: 400,
     },
     button: {
       color: 'white',
-      size: '1.425rem',
+      fontSize: '0.8125rem',
     },
-    heading1: {},
-    heading2: {},
-    heading3: {},
+    heading1: {
+      fontSize: '1.6rem',
+    },
+    heading2: {
+      fontSize: '1.4rem',
+    },
+    heading3: {
+      fontSize: '1.2rem',
+    },
     paragraph: {},
-    quote: {},
-    small: {},
-    subheading: {},
-    subtitle: {},
-    title: {},
+    quote: {
+      fontStyle: 'italic',
+      opacity: 0.7,
+    },
+    small: {
+      fontSize: '0.75rem',
+    },
+    subheading: {
+      fontSize: '1.15rem',
+    },
+    subtitle: {
+      fontSize: '1.3rem',
+      fontWeight: 700,
+    },
+    title: {
+      fontSize: '1.7rem',
+      fontWeight: 700,
+    },
   },
   shadow: [
     '0 0 0 transparent',

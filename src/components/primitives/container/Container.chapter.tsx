@@ -7,13 +7,13 @@
 /**
  * Require necessary components
  */
-import STORY_NAMEStory from '@stories/STORY_NAME.story';
+import PrimitiveStory from '@stories/Primitive.story';
 import React from 'react';
-import COMPONENT_NAME from './COMPONENT_NAME';
+import Container from './Container';
 
 /**
- * COMPONENT_NAME Chapter
+ * Container Chapter
  */
-STORY_NAMEStory.add('COMPONENT_NAME', () => {
-  return <COMPONENT_NAME />;
+PrimitiveStory.add('Container', () => {
+  return <Container />;
 });

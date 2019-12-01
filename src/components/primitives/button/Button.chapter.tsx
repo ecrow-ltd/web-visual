@@ -23,7 +23,7 @@ const selectVariant = {
   default: 'normal' as ButtonIProps['variant'],
   id: 'COMPONENT',
   label: 'variant',
-  options: ['normal', 'inversion'] as Array<ButtonIProps['variant']>,
+  options: ['normal', 'tiny', 'inversion'] as Array<ButtonIProps['variant']>,
 };
 
 // Button Chapter

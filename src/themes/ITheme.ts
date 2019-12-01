@@ -24,21 +24,21 @@ export interface IColor {
 }
 
 export interface IFont {
-  readonly family: string;
+  readonly fontFamily: string;
   readonly opacity: number;
-  readonly size: number | string;
-  readonly style: string;
+  readonly fontSize: number | string;
+  readonly fontStyle: string;
   readonly color: string;
-  readonly weight: number;
+  readonly fontWeight: number;
 }
 
 export interface IFontOptional {
-  readonly family?: string;
-  readonly opacity?: string;
-  readonly size?: number | string;
-  readonly style?: string;
+  readonly fontFamily?: string;
+  readonly opacity?: number;
+  readonly fontSize?: number | string;
+  readonly fontStyle?: string;
   readonly color?: string;
-  readonly weight?: number;
+  readonly fontWeight?: number;
 }
 
 export interface ITheme {

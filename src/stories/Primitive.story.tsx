@@ -14,6 +14,6 @@ StoryPrimitives.addDecorator((story: any, context: any) =>
   withInfo()(story)(context),
 );
 StoryPrimitives.addDecorator(withKnobs);
-StoryPrimitives.addDecorator(withProvider);
+// StoryPrimitives.addDecorator(withProvider);
 
 export default StoryPrimitives;
