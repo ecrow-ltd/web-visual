@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
@@ -9,15 +10,16 @@
     "sourceMap": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react",
+    "removeComments": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declarationDir": ".dist",
-    "outDir": ".dist",
+    "declarationDir": ".lib",
+    "outDir": ".lib",
     "types": ["react", "styled-components", "jest"],
     "baseUrl": "./",
     "paths": {
@@ -28,5 +30,6 @@
       "@providers/*": ["src/providers/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
