@@ -1,15 +1,14 @@
 {
-  "name": "@ecrow/visual-web",
+  "name": "@ecrow-ltd/web-visual",
   "library": "visual-web",
   "version": "1.0.0",
-  "description": "Library of Visual Components for eCrow Ltd.",
-  "private": true,
+  "description": "Library of Visual Components for the web.",
+  "private": false,
   "main": "./.lib/index.js",
   "types": "./.lib/index.d.ts",
   "files": [
     ".dist",
-    ".lib",
-    "src"
+    ".lib"
   ],
   "scripts": {
     "clean": "npm run clean:lib && npm run clean:dist",
