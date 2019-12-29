@@ -1,11 +1,9 @@
+import { IThemeProps } from '@attire/ITheme';
 import DefaultAttire from '@attire/default';
-import { IAttireProps } from '@attire/IAttire';
-import { ITheme, IThemeProps } from '@attire/ITheme';
-import Box from '@primitives/box';
 import Text from '@primitives/text';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import styled, { CSSObject, ThemeProvider } from 'styled-components';
+import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {
   /**
@@ -39,11 +37,11 @@ export const Styled = styled.button<IProps>((props: IProps & IThemeProps) => {
   const inverted = variant === 'inversion';
 
   // Get the indicate color from the theme.
-  const indicateColor = theme.color.background;
+  const indicateColor = theme.color[indicate].background;
 
   // Declare a mutable styling for this component.
   let style: CSSObject = {
-    backgroundColor: theme.color.background,
+    backgroundColor: indicateColor,
     border: 'none',
     borderRadius: theme.shape.border.radius,
     boxShadow: theme.shadow[0],
@@ -68,6 +66,10 @@ export const Styled = styled.button<IProps>((props: IProps & IThemeProps) => {
   return style;
 });
 
+Styled.defaultProps = {
+  theme: DefaultAttire.primary,
+};
+
 /**
  * A standard button component.
  */
@@ -89,19 +91,22 @@ class Button extends PureComponent<IProps, IState> {
     disabled: false,
     indicate: 'neutral',
     onClick: () => {},
+    theme: DefaultAttire.primary,
     variant: 'normal',
   };
 
   public render() {
-    const props: IProps & IAttireProps = this.props as IProps & IAttireProps;
-    const attire = props.attire ? props.attire : DefaultAttire;
+    const props: IProps & IThemeProps = this.props as IProps & IThemeProps;
+    const { theme } = props;
 
     return (
-      <ThemeProvider theme={attire[props.indicate]}>
-        <Styled {...props}>
-          <Text children={this.props.children} variant="base" />
-        </Styled>
-      </ThemeProvider>
+      <Styled {...props}>
+        <Text
+          children={this.props.children}
+          color={theme.color[props.indicate].font}
+          variant="base"
+        />
+      </Styled>
     );
   }
 }

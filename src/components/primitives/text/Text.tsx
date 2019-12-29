@@ -1,10 +1,15 @@
 import DefaultAttire from '@attire/default';
-import { ITheme, IThemeProps } from '@attire/ITheme';
+import { IThemeProps } from '@attire/ITheme';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {
+  /**
+   * Custom color.
+   */
+  color: string;
+
   /**
    * Variant of the Text
    */
@@ -27,13 +32,15 @@ export interface IState {}
  * Styling for a component.
  */
 export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
-  const { theme, variant } = props;
+  const { theme, color, variant } = props;
+
+  const fontColor = color.length ? color : theme.color.base.font;
 
   // Styling for this component.
   const style: CSSObject = {
     ...theme.font.base,
     ...theme.font[variant],
-    color: theme.color.font,
+    color: fontColor,
     transition: `all ${theme.transition.duration.complex}ms`,
   };
 
@@ -41,7 +48,7 @@ export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
 });
 
 Styled.defaultProps = {
-  theme: DefaultAttire.base,
+  theme: DefaultAttire.primary,
 };
 
 /**
@@ -49,6 +56,7 @@ Styled.defaultProps = {
  */
 class Text extends Component<IProps, IState> {
   public static propTypes = {
+    color: PropTypes.string,
     variant: PropTypes.oneOf([
       'base',
       'title',
@@ -64,6 +72,7 @@ class Text extends Component<IProps, IState> {
   };
 
   public static defaultProps = {
+    color: '',
     variant: 'base',
   };
 

@@ -1,9 +1,31 @@
 import { ITheme } from '@attire/ITheme';
 
-const base: ITheme = {
+const primary: ITheme = {
   color: {
-    background: 'white',
-    font: 'black',
+    base: {
+      background: 'white',
+      font: 'black',
+    },
+    creative: {
+      background: 'forestgreen',
+      font: 'white',
+    },
+    destructive: {
+      background: 'firebrick',
+      font: 'white',
+    },
+    negative: {
+      background: 'darkred',
+      font: 'white',
+    },
+    neutral: {
+      background: 'dimgrey',
+      font: 'white',
+    },
+    positive: {
+      background: 'royalblue',
+      font: 'white',
+    },
   },
   font: {
     base: {
@@ -93,4 +115,4 @@ const base: ITheme = {
   },
 };
 
-export default base;
+export default primary;

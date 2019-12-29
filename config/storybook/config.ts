@@ -1,12 +1,10 @@
-import {
-  setDefaults as setInfoAddonDefaults,
-  withInfo,
-} from '@storybook/addon-info';
-import { addDecorator, addParameters, configure } from '@storybook/react';
+import { setDefaults as setInfoAddonDefaults } from '@storybook/addon-info';
+import { addParameters, configure } from '@storybook/react';
 import theme from './theme';
 
 // automatically import all files ending in *.chapter.tsx
-const req = require.context('../../src/components', true, /.chapter.tsx$/);
+// @ts-ignore
+const req = require['context']('../../src/components', true, /.chapter.tsx$/);
 
 function loadStories() {
   addParameters({
@@ -14,6 +12,7 @@ function loadStories() {
       panelPosition: 'right',
       theme,
     },
+    info: {},
   });
   req.keys().forEach(req);
 }

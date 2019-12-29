@@ -22,7 +22,7 @@ export const Styled = styled.div<IProps>((props: IThemeProps) => {
 
   // Styling for this component.
   const style: CSSObject = {
-    backgroundColor: theme.color.background,
+    backgroundColor: theme.color.base.background,
   };
 
   return style;
@@ -35,7 +35,7 @@ class Box extends PureComponent<IProps, IState> {
   public static propTypes = {};
 
   public static defaultProps = {
-    theme: 'base',
+    theme: 'primary',
   };
 
   public render() {

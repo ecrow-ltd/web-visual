@@ -36,7 +36,14 @@ export interface IFontOptional {
 }
 
 export interface ITheme {
-  readonly color: IColor;
+  readonly color: {
+    readonly base: IColor;
+    readonly creative: IColor;
+    readonly destructive: IColor;
+    readonly negative: IColor;
+    readonly neutral: IColor;
+    readonly positive: IColor;
+  };
   readonly font: {
     readonly base: IFont;
     readonly title: IFontOptional;

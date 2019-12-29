@@ -14,10 +14,10 @@ import Box, { IProps as IBoxProps } from './Box';
 
 // Indication Select
 const selectIndicate = {
-  default: 'base' as IBoxProps['theme'],
+  default: 'primary' as IBoxProps['theme'],
   id: 'COMPONENT',
   label: 'theme',
-  options: ['base', 'destructive'] as Array<IBoxProps['theme']>,
+  options: ['primary', 'secondary', 'tertiary'] as Array<IBoxProps['theme']>,
 };
 
 const One = (props: any) => (

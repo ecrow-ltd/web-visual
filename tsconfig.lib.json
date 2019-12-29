@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationDir": "./.lib",
+    "outDir": "./.lib",
+    "removeComments": true,
+    "types": ["webpack-env", "react", "styled-components", "jest"],
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@attire/*": ["src/attire/*"],
+      "@stories/*": ["src/stories/*"],
+      "@primitives/*": ["src/components/primitives/*"],
+      "@providers/*": ["src/providers/*"]
+    }
+  },
+  "include": ["./src/**/*.ts", "./src/*.tsx"]
+}
