@@ -1,3 +1,1 @@
-import Component from './Component';
-
-export { Component };
+export const test = 'Hello World';

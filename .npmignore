@@ -1,4 +1,5 @@
 # Ignore Everything.
+*
 
 # Except for the Distribution and Library folders.
 !.dist

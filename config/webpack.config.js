@@ -1,11 +1,15 @@
 const argv = require("yargs").argv;
 
-let config = {};
+const dest = argv.dest;
+const mode = argv.mode;
+var config = {};
 
-switch (argv.dest) {
-  case "distribution":
-    config = require("./distribution");
-    break;
+switch(dest) {
+    case 'distribution':
+        config = require("./distribution")(mode);
+        break;
+    default:
+        throw new Error(`Error: The destination (dest) "${type}" isn't unknown.`);
 }
 
 module.exports = config;
