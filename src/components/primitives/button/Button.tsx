@@ -91,19 +91,17 @@ class Button extends PureComponent<IProps, IState> {
     disabled: false,
     indicate: 'neutral',
     onClick: () => {},
-    theme: DefaultAttire.primary,
     variant: 'normal',
   };
 
   public render() {
-    const props: IProps & IThemeProps = this.props as IProps & IThemeProps;
-    const { theme } = props;
+    const props: IProps = this.props as IProps;
 
     return (
       <Styled {...props}>
         <Text
           children={this.props.children}
-          color={theme.color[props.indicate].font}
+          indicate={props.indicate}
           variant="base"
         />
       </Styled>

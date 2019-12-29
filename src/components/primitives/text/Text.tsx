@@ -6,9 +6,15 @@ import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {
   /**
-   * Custom color.
+   * Indicates a type of theme coloring to use.
    */
-  color: string;
+  indicate:
+    | 'base'
+    | 'neutral'
+    | 'positive'
+    | 'negative'
+    | 'creative'
+    | 'destructive';
 
   /**
    * Variant of the Text
@@ -32,9 +38,9 @@ export interface IState {}
  * Styling for a component.
  */
 export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
-  const { theme, color, variant } = props;
+  const { theme, indicate, variant } = props;
 
-  const fontColor = color.length ? color : theme.color.base.font;
+  const fontColor = theme.color[indicate].font;
 
   // Styling for this component.
   const style: CSSObject = {
@@ -56,7 +62,14 @@ Styled.defaultProps = {
  */
 class Text extends Component<IProps, IState> {
   public static propTypes = {
-    color: PropTypes.string,
+    indicate: PropTypes.oneOf([
+      'base',
+      'neutral',
+      'positive',
+      'negative',
+      'creative',
+      'destructive',
+    ]),
     variant: PropTypes.oneOf([
       'base',
       'title',
@@ -72,7 +85,7 @@ class Text extends Component<IProps, IState> {
   };
 
   public static defaultProps = {
-    color: '',
+    indicate: 'base',
     variant: 'base',
   };
 
