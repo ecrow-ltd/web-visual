@@ -3,7 +3,7 @@ import { ITheme } from '@attire/ITheme';
 const primary: ITheme = {
   color: {
     base: {
-      background: 'white',
+      background: 'lightgray',
       font: 'black',
     },
     creative: {
@@ -81,9 +81,13 @@ const primary: ITheme = {
     },
   },
   touchable: {
+    idle: {
+      cursor: 'pointer',
+      filter: 'brightness(100%)',
+      transition: 'all 375ms',
+    },
     active: {
       filter: 'brightness(80%)',
-      transition: `all 200ms`,
     },
     disabled: {
       opacity: 0.6,
@@ -92,8 +96,9 @@ const primary: ITheme = {
     },
     hover: {
       cursor: 'pointer',
-      filter: 'brightness(120%)',
-      transition: `all 200ms`,
+      filter: 'brightness(130%)',
+      boxShadow:
+        '0px 1px 5px 0px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 3px 1px -2px rgba(0,0,0,0.12)',
     },
   },
   transition: {

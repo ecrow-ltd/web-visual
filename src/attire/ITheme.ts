@@ -64,6 +64,7 @@ export interface ITheme {
     };
   };
   readonly touchable: {
+    idle: CSSObject;
     disabled: CSSObject;
     active: CSSObject;
     hover: CSSObject;

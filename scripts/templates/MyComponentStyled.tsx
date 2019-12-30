@@ -1,7 +1,7 @@
 import DefaultAttire from '@attire/default';
 import { IThemeProps } from '@attire/ITheme';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {}
@@ -27,7 +27,7 @@ Styled.defaultProps = {
 /**
  * The component
  */
-class COMPONENT_NAME extends Component<IProps, IState> {
+class COMPONENT_NAME extends PureComponent<IProps, IState> {
   public static propTypes = {};
 
   public static defaultProps = {};

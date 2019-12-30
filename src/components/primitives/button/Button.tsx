@@ -1,6 +1,7 @@
 import { IThemeProps } from '@attire/ITheme';
 import DefaultAttire from '@attire/default';
 import Text from '@primitives/text';
+import { Styled as TouchableStyled } from '@primitives/touchable/Touchable';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -21,7 +22,7 @@ export interface IProps {
   /**
    * Callback when the button is clicked.
    */
-  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 export interface IState {}
@@ -29,9 +30,9 @@ export interface IState {}
 /**
  * Styling for a button element.
  */
-export const Styled = styled.button<IProps>((props: IProps & IThemeProps) => {
+export const Styled = styled(TouchableStyled)((props: IProps & IThemeProps) => {
   // Extract the theme and component properties.
-  const { theme, disabled, indicate, variant } = props;
+  const { theme, indicate, variant } = props;
 
   // Store a boolean indicating if the button varient should be inverted.
   const inverted = variant === 'inversion';
@@ -41,27 +42,14 @@ export const Styled = styled.button<IProps>((props: IProps & IThemeProps) => {
 
   // Declare a mutable styling for this component.
   let style: CSSObject = {
+    display: 'inline-block',
     backgroundColor: indicateColor,
     border: 'none',
     borderRadius: theme.shape.border.radius,
     boxShadow: theme.shadow[0],
-    filter: 'brightness(100%)',
     outline: 'none',
     padding: '6px 12px',
-    transition: `all ${theme.transition.duration.complex}ms`,
   };
-
-  // Apply touchable CSS events to the button
-  style['&:hover'] = {
-    ...theme.touchable.hover,
-    backgroundColor: inverted ? indicateColor : undefined,
-  };
-  style['&:active'] = theme.touchable.active;
-
-  // If disabled is applied, assign the disabled theme properties to the style.
-  if (disabled) {
-    style = { ...style, ...theme.touchable.disabled };
-  }
 
   return style;
 });

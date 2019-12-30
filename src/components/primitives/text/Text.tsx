@@ -37,7 +37,7 @@ export interface IState {}
 /**
  * Styling for a component.
  */
-export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
+export const Styled = styled.span<IProps>((props: IProps & IThemeProps) => {
   const { theme, indicate, variant } = props;
 
   const fontColor = theme.color[indicate].font;

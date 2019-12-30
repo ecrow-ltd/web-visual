@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 export interface IProps {}
 
@@ -8,7 +8,7 @@ export interface IState {}
 /**
  * A component
  */
-class COMPONENT_NAME extends Component<IProps, IState> {
+class COMPONENT_NAME extends PureComponent<IProps, IState> {
   public static propTypes = {};
 
   public static defaultProps = {};
