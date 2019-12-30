@@ -89,6 +89,7 @@ class Button extends PureComponent<IProps, IState> {
       <Styled {...props}>
         <Text
           children={this.props.children}
+          selectable={false}
           indicate={props.indicate}
           variant="base"
         />

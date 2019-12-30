@@ -30,6 +30,11 @@ export interface IProps {
     | 'paragraph'
     | 'quote'
     | 'small';
+
+  /**
+   * Determines the text is selectable.
+   */
+  selectable: boolean;
 }
 
 export interface IState {}
@@ -38,17 +43,27 @@ export interface IState {}
  * Styling for a component.
  */
 export const Styled = styled.span<IProps>((props: IProps & IThemeProps) => {
-  const { theme, indicate, variant } = props;
+  const { theme, indicate, variant, selectable } = props;
 
   const fontColor = theme.color[indicate].font;
 
   // Styling for this component.
-  const style: CSSObject = {
+  var style: CSSObject = {
     ...theme.font.base,
     ...theme.font[variant],
     color: fontColor,
     transition: `all ${theme.transition.duration.complex}ms`,
   };
+
+  if (!selectable) {
+    style = {
+      ...style,
+      userSelect: 'none',
+      msUserSelect: 'none',
+      MozUserSelect: 'none',
+      WebkitUserSelect: 'none',
+    };
+  }
 
   return style;
 });
@@ -58,7 +73,7 @@ Styled.defaultProps = {
 };
 
 /**
- * The component
+ * Displays typography in its many variations. It is reactive to applied themes.
  */
 class Text extends Component<IProps, IState> {
   public static propTypes = {
@@ -82,11 +97,13 @@ class Text extends Component<IProps, IState> {
       'quote',
       'small',
     ]),
+    selectable: PropTypes.bool,
   };
 
   public static defaultProps = {
     indicate: 'base',
     variant: 'base',
+    selectable: true,
   };
 
   public render() {
