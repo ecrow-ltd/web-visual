@@ -1,5 +1,5 @@
-import DefaultTheme from '@themes/Default.theme';
-import { IPropsTheme, ITheme } from '@themes/ITheme';
+import DefaultAttire from '@attire/default';
+import { IThemeProps } from '@attire/ITheme';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -9,9 +9,9 @@ export interface IProps {}
 export interface IState {}
 
 /**
- * Styling for a component.
+ * Styling for the component.
  */
-export const Styled = styled.div<IProps>((props: IProps & IPropsTheme) => {
+export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
   const { theme } = props;
 
   // Styling for this component.
@@ -21,7 +21,7 @@ export const Styled = styled.div<IProps>((props: IProps & IPropsTheme) => {
 });
 
 Styled.defaultProps = {
-  theme: DefaultTheme,
+  theme: DefaultAttire.primary,
 };
 
 /**
