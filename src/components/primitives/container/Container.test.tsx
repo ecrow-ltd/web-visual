@@ -2,11 +2,11 @@ import { mount, render, shallow } from 'enzyme';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Box from './Box';
+import Container from './Container';
 
-describe('Box', () => {
+describe('Container', () => {
   test('renders', () => {
-    const component = renderer.create(<Box />);
+    const component = renderer.create(<Container />);
     expect(component).toBeDefined();
   });
 });

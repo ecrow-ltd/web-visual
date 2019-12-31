@@ -48,7 +48,7 @@ export const Styled = styled.span<IProps>((props: IProps & IThemeProps) => {
   const fontColor = theme.color[indicate].font;
 
   // Styling for this component.
-  var style: CSSObject = {
+  let style: CSSObject = {
     ...theme.font.base,
     ...theme.font[variant],
     color: fontColor,
@@ -85,6 +85,7 @@ class Text extends Component<IProps, IState> {
       'creative',
       'destructive',
     ]),
+    selectable: PropTypes.bool,
     variant: PropTypes.oneOf([
       'base',
       'title',
@@ -97,13 +98,12 @@ class Text extends Component<IProps, IState> {
       'quote',
       'small',
     ]),
-    selectable: PropTypes.bool,
   };
 
   public static defaultProps = {
     indicate: 'base',
-    variant: 'base',
     selectable: true,
+    variant: 'base',
   };
 
   public render() {
