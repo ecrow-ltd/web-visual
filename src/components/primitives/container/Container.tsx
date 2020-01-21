@@ -27,7 +27,7 @@ export interface IProps {
   spacing: number;
 
   /**
-   * An array to associate how to size the components.
+   * An array to associate the relative size the child components.
    */
   sizing: any[string | number];
 
@@ -58,7 +58,10 @@ export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
 });
 
 /**
- * The component
+ * This container component has options to display child components in specific layouts.
+ * I takes advantage of CSS flex to provide powerful layout options.
+ * Containers can also determine the theme for all nested components. Another nested container
+ * can change the theme again from within the nested hierarchy.
  */
 class Container extends PureComponent<IProps, IState> {
   public static propTypes = {

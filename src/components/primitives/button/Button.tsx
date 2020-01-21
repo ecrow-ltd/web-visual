@@ -18,7 +18,7 @@ export interface IProps {
   /**
    * Variant type
    */
-  variant: 'normal' | 'tiny' | 'inversion';
+  variant: 'normal' | 'tiny';
   /**
    * Callback when the button is clicked.
    */
@@ -34,9 +34,6 @@ export const Styled = styled(TouchableStyled)((props: IProps & IThemeProps) => {
   // Extract the theme and component properties.
   const { theme, indicate, variant } = props;
 
-  // Store a boolean indicating if the button varient should be inverted.
-  const inverted = variant === 'inversion';
-
   // Get the indicate color from the theme.
   const indicateColor = theme.color[indicate].background;
 
@@ -48,7 +45,7 @@ export const Styled = styled(TouchableStyled)((props: IProps & IThemeProps) => {
     borderRadius: theme.shape.border.radius,
     boxShadow: theme.shadow[0],
     outline: 'none',
-    padding: '6px 12px',
+    padding: variant == 'tiny' ? '2px 8px' : '6px 12px'
   };
 
   return style;
@@ -72,7 +69,7 @@ class Button extends PureComponent<IProps, IState> {
       'destructive',
     ]),
     onClick: PropTypes.func,
-    variant: PropTypes.oneOf(['normal', 'inversion']),
+    variant: PropTypes.oneOf(['normal', 'tiny']),
   };
 
   public static defaultProps = {
@@ -91,7 +88,7 @@ class Button extends PureComponent<IProps, IState> {
           children={this.props.children}
           selectable={false}
           indicate={props.indicate}
-          variant="base"
+          variant={props.variant == 'tiny' ? 'small' : 'base'}
         />
       </Styled>
     );
