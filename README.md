@@ -30,7 +30,7 @@ git clone git@github.com:ecrow-ltd/web-visual.git
 git clone https://github.com/ecrow-ltd/web-visual.git
 ```
 
-Navitate in the directory of the newly cloned repository using NPM or Yarn.
+Navigate in the directory of the newly cloned repository using NPM or Yarn.
 
 ```bash
 cd web-visual
