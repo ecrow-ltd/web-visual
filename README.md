@@ -84,7 +84,10 @@ If you're [Running the Application](#running-the-application), you'll be able to
 
 ![Component](./docs/resources/web-visual-component-types.jpg)
 
-There are three types of components in this project.
+There are three levels of components: Primitive, Construct, and Widget components; each getting more intelligent through composition.
+* **Primitive** components are the most basic components consisting of raw HTML/JSX elements or a single composition of another Primitive component. They are also the only *styled* component.
+* **Construct** components compose of two or more *Primitive* or other *Construct* components. Like a login form consisting of two Primitive input fields.
+* **Widget** components are complex components that react to structured data while composing of Construct and/or Primitive components.
 
 ## Building
 
