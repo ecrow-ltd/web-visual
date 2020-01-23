@@ -35,6 +35,11 @@ export interface IProps {
    * Determines the text is selectable.
    */
   selectable: boolean;
+
+  /**
+   * Determines if the text can be edited.
+   */
+  editable: boolean;
 }
 
 export interface IState {}
@@ -77,6 +82,7 @@ Styled.defaultProps = {
  */
 class Text extends Component<IProps, IState> {
   public static propTypes = {
+    editable: false,
     indicate: PropTypes.oneOf([
       'base',
       'neutral',
@@ -101,13 +107,14 @@ class Text extends Component<IProps, IState> {
   };
 
   public static defaultProps = {
+    editable: false,
     indicate: 'base',
     selectable: true,
     variant: 'base',
   };
 
   public render() {
-    return <Styled {...this.props} />;
+    return <Styled contentEditable={this.props.editable} {...this.props} />;
   }
 }
 
