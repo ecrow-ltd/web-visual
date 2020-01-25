@@ -36,15 +36,13 @@ const selectVariant = {
 PrimitiveStory.add('Text', () => {
   return (
     <Text
-      editable={boolean('editable', false)}
+      value={text('value', 'Some Sample Text')}
       selectable={boolean('selectable', true)}
       variant={select(
         selectVariant.label,
         selectVariant.options,
         selectVariant.default,
       )}
-    >
-      {text('Text', 'Some Sample Text')}
-    </Text>
+    />
   );
 });

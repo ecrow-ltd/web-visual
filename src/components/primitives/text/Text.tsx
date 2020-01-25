@@ -1,7 +1,7 @@
 import DefaultAttire from '@attire/default';
 import { IThemeProps } from '@attire/ITheme';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {
@@ -37,9 +37,9 @@ export interface IProps {
   selectable: boolean;
 
   /**
-   * Determines if the text can be edited.
+   * The value of the text.
    */
-  editable: boolean;
+  value: string;
 }
 
 export interface IState {}
@@ -56,6 +56,7 @@ export const Styled = styled.span<IProps>((props: IProps & IThemeProps) => {
   let style: CSSObject = {
     ...theme.font.base,
     ...theme.font[variant],
+    border: 'none',
     color: fontColor,
     transition: `all ${theme.transition.duration.complex}ms`,
   };
@@ -63,10 +64,12 @@ export const Styled = styled.span<IProps>((props: IProps & IThemeProps) => {
   if (!selectable) {
     style = {
       ...style,
-      userSelect: 'none',
-      msUserSelect: 'none',
       MozUserSelect: 'none',
       WebkitUserSelect: 'none',
+      msUserSelect: 'none',
+      outline: 'none',
+      pointerEvents: 'none',
+      userSelect: 'none',
     };
   }
 
@@ -82,7 +85,6 @@ Styled.defaultProps = {
  */
 class Text extends Component<IProps, IState> {
   public static propTypes = {
-    editable: false,
     indicate: PropTypes.oneOf([
       'base',
       'neutral',
@@ -107,14 +109,15 @@ class Text extends Component<IProps, IState> {
   };
 
   public static defaultProps = {
-    editable: false,
     indicate: 'base',
     selectable: true,
+    value: 'example',
     variant: 'base',
   };
 
   public render() {
-    return <Styled contentEditable={this.props.editable} {...this.props} />;
+    const { children, ...props } = this.props;
+    return <Styled {...props}>{this.props.value}</Styled>;
   }
 }
 
