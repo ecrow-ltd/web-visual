@@ -7,7 +7,6 @@ import Button, { IProps as ButtonIProps } from './Button';
 // Indication Select
 const selectIndicate = {
   default: 'neutral' as ButtonIProps['indicate'],
-  id: 'COMPONENT',
   label: 'indicate',
   options: [
     'neutral',
@@ -21,7 +20,6 @@ const selectIndicate = {
 // Variant Select
 const selectVariant = {
   default: 'normal' as ButtonIProps['variant'],
-  id: 'COMPONENT',
   label: 'variant',
   options: ['normal', 'tiny'] as Array<ButtonIProps['variant']>,
 };
@@ -30,22 +28,20 @@ const selectVariant = {
 PrimitiveStory.add('Button', () => {
   return (
     <Button
-      disabled={boolean('disabled', false, 'COMPONENT')}
+      disabled={boolean('disabled', false)}
       indicate={select(
         selectIndicate.label,
         selectIndicate.options,
         selectIndicate.default,
-        selectIndicate.id,
       )}
       variant={select(
         selectVariant.label,
         selectVariant.options,
         selectVariant.default,
-        selectVariant.id,
       )}
       onClick={action('Clicked (onClick)')}
     >
-      {text('text', 'Button', 'COMPONENT')}
+      {text('text', 'Button')}
     </Button>
   );
 });

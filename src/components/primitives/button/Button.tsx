@@ -1,5 +1,5 @@
-import { IThemeProps } from '@attire/ITheme';
 import DefaultAttire from '@attire/default';
+import { IThemeProps } from '@attire/ITheme';
 import Text from '@primitives/text';
 import { Styled as TouchableStyled } from '@primitives/touchable/Touchable';
 import PropTypes from 'prop-types';
@@ -30,7 +30,7 @@ export interface IState {}
 /**
  * Styling for a button element.
  */
-export const Styled = styled(TouchableStyled)((props: IProps & IThemeProps) => {
+export const Styled = styled(TouchableStyled)((props: any & IThemeProps) => {
   // Extract the theme and component properties.
   const { theme, indicate, variant } = props;
 
@@ -38,14 +38,14 @@ export const Styled = styled(TouchableStyled)((props: IProps & IThemeProps) => {
   const indicateColor = theme.color[indicate].background;
 
   // Declare a mutable styling for this component.
-  let style: CSSObject = {
-    display: 'inline-block',
+  const style: CSSObject = {
     backgroundColor: indicateColor,
     border: 'none',
     borderRadius: theme.shape.border.radius,
     boxShadow: theme.shadow[0],
+    display: 'inline-block',
     outline: 'none',
-    padding: variant == 'tiny' ? '2px 8px' : '6px 12px'
+    padding: variant == 'tiny' ? '2px 8px' : '6px 12px',
   };
 
   return style;
@@ -80,15 +80,15 @@ class Button extends PureComponent<IProps, IState> {
   };
 
   public render() {
-    const props: IProps = this.props as IProps;
+    const { children, ...props } = this.props;
 
     return (
       <Styled {...props}>
         <Text
-          children={this.props.children}
+          value={children?.toString()}
           selectable={false}
           indicate={props.indicate}
-          variant={props.variant == 'tiny' ? 'small' : 'base'}
+          variant={props.variant === 'tiny' ? 'small' : 'base'}
         />
       </Styled>
     );

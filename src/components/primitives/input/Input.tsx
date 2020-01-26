@@ -11,9 +11,19 @@ export interface IProps {
   value: any;
 
   /**
+   * The title of the input field.
+   */
+  title: string;
+
+  /**
    * Determines if the input field is editable.
    */
   editable: boolean;
+
+  /**
+   * Additional information to associate with the input.
+   */
+  information: string;
 
   /**
    * Variant of the input text
@@ -50,23 +60,22 @@ export interface IState {
  * Styling for the component.
  */
 export const Styled = styled.div<any>((props: any & IThemeProps) => {
-  const { theme, editable } = props;
-
-  const inputColor = theme.color.base.background;
-  const focusColor = theme.color.neutral.background;
+  const { theme, editable, focused } = props;
+  const fontColor = theme.color.base.font;
 
   // Styling for this component.
   const style: CSSObject = {
-    borderBottom: 'solid #00000000 2px',
+    ...theme.font.base,
+    ...theme.font.small,
+    borderBottom: 'solid #00000000 1px',
+    color: fontColor,
     display: 'inline-block',
+    transition: `all ${theme.transition.duration.complex}ms`,
   };
 
-  if (editable) {
-    style.borderBottom = `solid ${inputColor} 2px`;
-    style['&:focus'] = {
-      borderBottom: `solid ${focusColor} 2px`,
-    };
-  }
+  style['&:hover'] = {
+    opacity: 1,
+  };
 
   return style;
 });
@@ -76,12 +85,36 @@ Styled.defaultProps = {
 };
 
 /**
+ * Styling for the title component.
+ */
+export const TitleStyled = styled.div<any>((props: any & IThemeProps) => {
+  const { theme, focused } = props;
+
+  // Styling for this component.
+  const style: CSSObject = {
+    color: focused ? theme.color.positive.background : 'inherit',
+    marginBottom: 2,
+    marginTop: 2,
+    transition: `all ${theme.transition.duration.complex}ms`,
+  };
+
+  return style;
+});
+
+TitleStyled.defaultProps = {
+  theme: DefaultAttire.primary,
+};
+
+/**
  * Styling for the input component.
  */
 export const InputStyled = styled.input<any>((props: any & IThemeProps) => {
-  const { theme, variant, editable } = props;
+  const { theme, variant, editable, focused } = props;
 
+  const backgroundColor = theme.color.positive.background;
   const fontColor = theme.color.base.font;
+  const inputColor = theme.color.base.background;
+  const focusColor = theme.color.positive.background;
 
   // Styling for this component.
   const style: CSSObject = {
@@ -90,16 +123,27 @@ export const InputStyled = styled.input<any>((props: any & IThemeProps) => {
     border: 'none',
     color: fontColor,
     display: 'inline-block',
+    marginBottom: 1,
+    maxWidth: '100%',
+    outline: 'none',
     transition: `all ${theme.transition.duration.complex}ms`,
   };
 
-  style['&:focus'] = {
-    outline: 'none',
-  };
+  style['&:hover'] = editable
+    ? {
+        cursor: 'text',
+      }
+    : {};
 
-  style['&:hover'] = {
-    cursor: 'text',
-  };
+  if (editable) {
+    style.borderBottom = `solid ${focused ? focusColor : inputColor} 1px`;
+    style['&:hover'].borderBottom = `solid  ${focusColor} 1px`;
+    style['&:hover'].borderWidth = 2;
+    style['&:hover'].marginBottom = 0;
+    style['&:focus'] = {
+      ...style['&:hover'],
+    };
+  }
 
   return style;
 });
@@ -114,8 +158,10 @@ InputStyled.defaultProps = {
 class Input extends PureComponent<IProps, IState> {
   public static propTypes = {
     editable: PropTypes.bool,
+    information: PropTypes.string,
     onChange: PropTypes.func,
     testMode: PropTypes.bool,
+    title: PropTypes.string,
     value: PropTypes.any,
     variant: PropTypes.oneOf([
       'base',
@@ -133,8 +179,10 @@ class Input extends PureComponent<IProps, IState> {
 
   public static defaultProps = {
     editable: false,
+    information: '',
     onChange: () => {},
     testMode: false,
+    title: '',
     value: '',
     variant: 'base',
   };
@@ -145,22 +193,47 @@ class Input extends PureComponent<IProps, IState> {
   };
 
   public render() {
-    const { onChange, value, testMode, ...props } = this.props;
+    const {
+      onChange,
+      value,
+      testMode,
+      title,
+      information,
+      ...props
+    } = this.props;
     const currentValue = testMode ? this.state.value : value;
     return (
-      <Styled {...props}>
+      <Styled {...props} focused={this.state.focused}>
+        <TitleStyled focused={this.state.focused}>
+          {title.length ? title : '\u00A0'}
+        </TitleStyled>
         <InputStyled
           type="text"
           value={currentValue}
           size={currentValue.length}
-          onChange={this.handleOnChange}
+          onChange={this.handleChange}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           {...props}
         />
+        <TitleStyled focused={this.state.focused}>
+          {information.length ? information : '\u00A0'}
+        </TitleStyled>
       </Styled>
     );
   }
 
-  private handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  private handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (this.props.editable) {
+      this.setState({ focused: true });
+    }
+  };
+
+  private handleBlur = (event: any) => {
+    this.setState({ focused: false });
+  };
+
+  private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!this.props.editable) {
       return;
     }

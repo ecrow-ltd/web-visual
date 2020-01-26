@@ -2,7 +2,7 @@
  * Knobs to possibly include with the chapter of this story.
  */
 // import { action } from '@storybook/addon-actions';
-import { select, boolean } from '@storybook/addon-knobs';
+import { select, boolean, text } from '@storybook/addon-knobs';
 
 /**
  * Require necessary components
@@ -37,6 +37,11 @@ PrimitiveStory.add('Input', () => {
   return (
     <Input
       editable={boolean('editable', true)}
+      title={text('title', 'Title')}
+      information={text(
+        'information',
+        'This is additional information about the UI input.',
+      )}
       value={'Example'}
       variant={select(
         selectVariant.label,
