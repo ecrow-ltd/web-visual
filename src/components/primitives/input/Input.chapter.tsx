@@ -8,7 +8,7 @@ import { select, boolean, text } from '@storybook/addon-knobs';
  * Require necessary components
  */
 import PrimitiveStory from '@stories/Primitive.story';
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Input, { IProps as IInputProps } from './Input';
 
 // Variant Select

@@ -1,5 +1,5 @@
-import DefaultAttire from '@attire/default';
-import { IThemeProps } from '@attire/ITheme';
+import { IThemeProps } from '@theme/ITheme';
+import ThemeContext from '@context/ThemeContext';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -80,10 +80,6 @@ export const Styled = styled.div<any>((props: any & IThemeProps) => {
   return style;
 });
 
-Styled.defaultProps = {
-  theme: DefaultAttire.primary,
-};
-
 /**
  * Styling for the title component.
  */
@@ -100,10 +96,6 @@ export const TitleStyled = styled.div<any>((props: any & IThemeProps) => {
 
   return style;
 });
-
-TitleStyled.defaultProps = {
-  theme: DefaultAttire.primary,
-};
 
 /**
  * Styling for the input component.
@@ -147,10 +139,6 @@ export const InputStyled = styled.input<any>((props: any & IThemeProps) => {
 
   return style;
 });
-
-InputStyled.defaultProps = {
-  theme: DefaultAttire.primary,
-};
 
 /**
  * The component
@@ -203,23 +191,28 @@ class Input extends PureComponent<IProps, IState> {
     } = this.props;
     const currentValue = testMode ? this.state.value : value;
     return (
-      <Styled {...props} focused={this.state.focused}>
-        <TitleStyled focused={this.state.focused}>
-          {title.length ? title : '\u00A0'}
-        </TitleStyled>
-        <InputStyled
-          type="text"
-          value={currentValue}
-          size={currentValue.length}
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          {...props}
-        />
-        <TitleStyled focused={this.state.focused}>
-          {information.length ? information : '\u00A0'}
-        </TitleStyled>
-      </Styled>
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <Styled {...props} theme={theme} focused={this.state.focused}>
+            <TitleStyled focused={this.state.focused} theme={theme}>
+              {title.length ? title : '\u00A0'}
+            </TitleStyled>
+            <InputStyled
+              type="text"
+              value={currentValue}
+              size={currentValue.length}
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
+              {...props}
+              theme={theme}
+            />
+            <TitleStyled focused={this.state.focused} theme={theme}>
+              {information.length ? information : '\u00A0'}
+            </TitleStyled>
+          </Styled>
+        )}
+      </ThemeContext.Consumer>
     );
   }
 

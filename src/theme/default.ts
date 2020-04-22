@@ -1,6 +1,6 @@
-import { ITheme } from '@attire/ITheme';
+import { ITheme } from '@theme/ITheme';
 
-const primary: ITheme = {
+const defaultTheme: ITheme = {
   color: {
     base: {
       background: 'lightgray',
@@ -120,4 +120,4 @@ const primary: ITheme = {
   },
 };
 
-export default primary;
+export default defaultTheme;

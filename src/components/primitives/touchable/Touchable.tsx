@@ -1,5 +1,5 @@
-import DefaultAttire from '@attire/default';
-import { IThemeProps } from '@attire/ITheme';
+import ThemeContext from '@context/ThemeContext';
+import { IThemeProps } from '@theme/ITheme';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -41,10 +41,6 @@ export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
   return style;
 });
 
-Styled.defaultProps = {
-  theme: DefaultAttire.primary,
-};
-
 /**
  * Wrap this component around elements you want to apply touchable properties to.
  * It uses the theme to determine the styled behavior when hovered or clicked.
@@ -61,7 +57,11 @@ class Touchable extends PureComponent<IProps, IState> {
   };
 
   public render() {
-    return <Styled {...this.props} />;
+    return (
+      <ThemeContext.Consumer>
+        {(theme) => <Styled {...this.props} theme={theme} />}
+      </ThemeContext.Consumer>
+    );
   }
 }
 

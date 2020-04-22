@@ -1,15 +1,14 @@
-import DefaultAttire from '@attire/default';
-import { IAttireProps, TAttireTypes } from '@attire/IAttire';
-import { ITheme, IThemeProps } from '@attire/ITheme';
+import { ITheme, IThemeProps } from '@theme/ITheme';
+import ThemeContext from '@context/ThemeContext';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import styled, { CSSObject, ThemeProvider } from 'styled-components';
+import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {
   /**
-   * Indicates a type of content for this Container.
+   * Indicates a type of theme for this Container.
    */
-  theme: TAttireTypes;
+  theme: ITheme | undefined;
 
   /**
    * Determines the direction of the layout.
@@ -81,8 +80,8 @@ class Container extends PureComponent<IProps, IState> {
     theme: 'primary',
   };
 
-  public wrapChildren = () => {
-    const { children, sizing, spacing, direction, flex } = this.props;
+  static wrapChildren(props: any) {
+    const { children, sizing, spacing, direction, flex } = props;
     return React.Children.map(children, (child: any, index: number) => {
       // Store child styling.
       const childStyle: CSSObject = child.props.style;
@@ -118,20 +117,34 @@ class Container extends PureComponent<IProps, IState> {
         </div>
       );
     });
-  };
+  }
+
+  static BaseRender(props: any) {
+    const { context, ...nextProps } = props;
+    return (
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <Styled {...{ ...props, theme }}>
+            {Container.wrapChildren(props)}
+          </Styled>
+        )}
+      </ThemeContext.Consumer>
+    );
+  }
 
   public render() {
-    const props: IProps & IAttireProps = this.props as IProps & IAttireProps;
-    const attire = props.attire ? props.attire : DefaultAttire;
-    const themeProps = { theme: attire[props.theme] };
+    const props: IProps = this.props;
+    const isThemeSet = typeof props.theme === 'object' && !!props.theme;
 
-    return (
-      <ThemeProvider theme={attire[props.theme]}>
-        <Styled {...{ ...this.props, ...themeProps }}>
-          {this.wrapChildren()}
-        </Styled>
-      </ThemeProvider>
-    );
+    if (isThemeSet) {
+      return (
+        <ThemeContext.Provider value={props.theme as ITheme}>
+          <Container.BaseRender context={this} {...props} />
+        </ThemeContext.Provider>
+      );
+    }
+
+    return <Container.BaseRender {...props} />;
   }
 }
 

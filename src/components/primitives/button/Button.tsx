@@ -1,5 +1,5 @@
-import DefaultAttire from '@attire/default';
-import { IThemeProps } from '@attire/ITheme';
+import ThemeContext from '@context/ThemeContext';
+import { IThemeProps } from '@theme/ITheme';
 import Text from '@primitives/text';
 import { Styled as TouchableStyled } from '@primitives/touchable/Touchable';
 import PropTypes from 'prop-types';
@@ -51,10 +51,6 @@ export const Styled = styled(TouchableStyled)((props: any & IThemeProps) => {
   return style;
 });
 
-Styled.defaultProps = {
-  theme: DefaultAttire.primary,
-};
-
 /**
  * A standard button component.
  */
@@ -83,14 +79,18 @@ class Button extends PureComponent<IProps, IState> {
     const { children, ...props } = this.props;
 
     return (
-      <Styled {...props}>
-        <Text
-          value={children?.toString()}
-          selectable={false}
-          indicate={props.indicate}
-          variant={props.variant === 'tiny' ? 'small' : 'base'}
-        />
-      </Styled>
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <Styled {...props} theme={theme}>
+            <Text
+              value={children?.toString()}
+              selectable={false}
+              indicate={props.indicate}
+              variant={props.variant === 'tiny' ? 'small' : 'base'}
+            />
+          </Styled>
+        )}
+      </ThemeContext.Consumer>
     );
   }
 }

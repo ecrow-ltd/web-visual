@@ -1,7 +1,7 @@
-import DefaultAttire from '@attire/default';
-import { IThemeProps } from '@attire/ITheme';
+import ThemeContext from '@context/ThemeContext';
+import { IThemeProps } from '@theme/ITheme';
 import PropTypes from 'prop-types';
-import React, { Component, useState } from 'react';
+import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {
@@ -76,14 +76,10 @@ export const Styled = styled.span<IProps>((props: IProps & IThemeProps) => {
   return style;
 });
 
-Styled.defaultProps = {
-  theme: DefaultAttire.primary,
-};
-
 /**
  * Displays typography in its many variations. It is reactive to applied themes.
  */
-class Text extends Component<IProps, IState> {
+class Text extends PureComponent<IProps, IState> {
   public static propTypes = {
     indicate: PropTypes.oneOf([
       'base',
@@ -117,7 +113,15 @@ class Text extends Component<IProps, IState> {
 
   public render() {
     const { children, ...props } = this.props;
-    return <Styled {...props}>{this.props.value}</Styled>;
+    return (
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <Styled {...props} theme={theme}>
+            {this.props.value}
+          </Styled>
+        )}
+      </ThemeContext.Consumer>
+    );
   }
 }
 

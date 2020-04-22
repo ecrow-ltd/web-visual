@@ -12,6 +12,7 @@ import PrimitiveStory from '@stories/Primitive.story';
 import React from 'react';
 import { CSSObject } from 'styled-components';
 import Container, { IProps as IContainerProps } from './Container';
+import DefaultTheme from '@theme/default';
 
 // Indication Select
 const selectDirection = {
@@ -20,14 +21,14 @@ const selectDirection = {
   options: ['x', 'y'] as Array<IContainerProps['direction']>,
 };
 
-// Indication Select
-const selectIndicate = {
-  default: 'primary' as IContainerProps['theme'],
-  label: 'theme',
-  options: ['primary', 'secondary', 'tertiary'] as Array<
-    IContainerProps['theme']
-  >,
-};
+// // Indication Select
+// const selectTheme = {
+//   default: 'primary' as IContainerProps['theme'],
+//   label: 'theme',
+//   options: ['primary', 'secondary', 'tertiary'] as Array<
+//     IContainerProps['theme']
+//   >,
+// };
 
 const exampleStyling: CSSObject = {
   alignItems: 'center',
@@ -72,11 +73,6 @@ PrimitiveStory.add('Container', () => {
       showBackground={boolean('showBackground', false)}
       sizing={array('sizing', ['1', '2', '1'], ':')}
       spacing={number('spacing', 0)}
-      theme={select(
-        selectIndicate.label,
-        selectIndicate.options,
-        selectIndicate.default,
-      )}
     >
       {contentItems.map((item) => item)}
     </Container>
