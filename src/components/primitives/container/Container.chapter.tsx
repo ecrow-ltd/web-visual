@@ -31,13 +31,10 @@ const selectDirection = {
 // };
 
 const exampleStyling: CSSObject = {
-  alignItems: 'center',
   border: '1px solid black',
   boxSizing: 'border-box',
   display: 'flex',
   height: '100%',
-  justifyContent: 'center',
-  minWidth: 100,
 };
 
 const One = (props: any) => (

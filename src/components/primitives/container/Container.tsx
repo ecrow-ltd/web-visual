@@ -6,7 +6,8 @@ import styled, { CSSObject } from 'styled-components';
 
 export interface IProps {
   /**
-   * Indicates a type of theme for this Container.
+   * Optional theme object to use for this container.
+   * See ITheme for the type definition of the theme object.
    */
   theme: ITheme | undefined;
 
@@ -27,6 +28,8 @@ export interface IProps {
 
   /**
    * An array to associate the relative size the child components.
+   * Pass number as a string for a fixed pixel size.
+   * Pass as a true number type for flex size.
    */
   sizing: any[string | number];
 
@@ -77,7 +80,7 @@ class Container extends PureComponent<IProps, IState> {
     showBackground: false,
     sizing: [],
     spacing: 0,
-    theme: 'primary',
+    theme: undefined,
   };
 
   static wrapChildren(props: any) {
@@ -120,7 +123,6 @@ class Container extends PureComponent<IProps, IState> {
   }
 
   static BaseRender(props: any) {
-    const { context, ...nextProps } = props;
     return (
       <ThemeContext.Consumer>
         {(theme) => (
