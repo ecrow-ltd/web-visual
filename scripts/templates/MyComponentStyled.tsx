@@ -1,5 +1,5 @@
-import DefaultAttire from '@attire/default';
-import { IThemeProps } from '@attire/ITheme';
+import ThemeContext from '@context/ThemeContext';
+import { IThemeProps } from '@theme/ITheme';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -20,10 +20,6 @@ export const Styled = styled.div<IProps>((props: IProps & IThemeProps) => {
   return style;
 });
 
-Styled.defaultProps = {
-  theme: DefaultAttire.primary,
-};
-
 /**
  * The component
  */
@@ -33,7 +29,15 @@ class COMPONENT_NAME extends PureComponent<IProps, IState> {
   public static defaultProps = {};
 
   public render() {
-    return <Styled {...this.props}>Hello World</Styled>;
+    return (
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <Styled {...this.props} theme={theme}>
+            Hello World
+          </Styled>
+        )}
+      </ThemeContext.Consumer>
+    );
   }
 }
 
