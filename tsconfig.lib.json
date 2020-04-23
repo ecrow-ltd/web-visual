@@ -14,10 +14,10 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"],
-      "@attire/*": ["src/attire/*"],
+      "@theme/*": ["src/theme/*"],
       "@stories/*": ["src/stories/*"],
       "@primitives/*": ["src/components/primitives/*"],
-      "@providers/*": ["src/providers/*"]
+      "@context/*": ["src/context/*"]
     }
   },
   "include": ["./src/**/*.ts", "./src/*.tsx"]
