@@ -2,10 +2,10 @@
   "name": "@ecrow-ltd/web-visual",
   "library": "web-visual",
   "version": "1.0.0",
-  "description": "Library of Visual Components for the web.",
+  "description": "A minimal pure JavaScript component library for the web.",
   "private": false,
-  "main": "./.lib/index.js",
-  "types": "./.lib/index.d.ts",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "files": [
     ".dist",
     ".lib"
@@ -56,7 +56,6 @@
     "@types/jest": "^24.0.25",
     "@types/react-test-renderer": "^16.9.1",
     "@types/storybook__addon-info": "^5.2.1",
-    "@types/styled-components": "^4.4.1",
     "@types/webpack-env": "^1.14.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
@@ -79,6 +78,7 @@
   "dependencies": {
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
