@@ -8,7 +8,7 @@ import { array, boolean, number, select, text } from '@storybook/addon-knobs';
  * Require necessary components
  */
 import Text from '@component/text/Text';
-import PrimitiveStory from '@story/Primitive.story';
+import Story from '@story/Story.story';
 import React from 'react';
 import { CSSObject } from 'styled-components';
 import Container, { IProps as IContainerProps } from './Container';
@@ -58,7 +58,7 @@ const contentItems = [<One key="1" />, <Two key="2" />, <Three key="3" />];
 /**
  * Container Chapter
  */
-PrimitiveStory.add('Container', () => {
+Story('Core').add('Container', () => {
   return (
     <Container
       direction={select(

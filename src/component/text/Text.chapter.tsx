@@ -7,7 +7,7 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 /**
  * Require necessary components
  */
-import PrimitiveStory from '@story/Primitive.story';
+import Story from '@story/Story.story';
 import React from 'react';
 import Text, { IProps as ITextProps } from './Text';
 
@@ -33,7 +33,7 @@ const selectVariant = {
 /**
  * Text Chapter
  */
-PrimitiveStory.add('Text', () => {
+Story('Core').add('Text', () => {
   return (
     <Text
       value={text('value', 'Some Sample Text')}

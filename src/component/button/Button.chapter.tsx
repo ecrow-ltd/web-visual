@@ -1,4 +1,4 @@
-import PrimitiveStory from '@story/Primitive.story';
+import Story from '@story/Story.story';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';
@@ -25,7 +25,7 @@ const selectVariant = {
 };
 
 // Button Chapter
-PrimitiveStory.add('Button', () => {
+Story('Core').add('Button', () => {
   return (
     <Button
       disabled={boolean('disabled', false)}

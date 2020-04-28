@@ -7,13 +7,13 @@
 /**
  * Require necessary components
  */
-import PrimitiveStory from '@story/Primitive.story';
+import Story from '@story/Story.story';
 import React from 'react';
 import Input from './Input';
 
 /**
  * Input Chapter
  */
-PrimitiveStory.add('Input', () => {
+Story('Core').add('Input', () => {
   return <Input />;
 });
