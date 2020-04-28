@@ -90,8 +90,9 @@ for (var i = 0; i < templateFiles.length; i++) {
   const fullFilePath =
     file === 'index.ts'
       ? `${PATH_COMPONENTS_TYPE_NAME}/${file}`
-      : `${PATH_COMPONENTS_TYPE_NAME}/${name +
-          file.substring(file.indexOf('.'))}`;
+      : `${PATH_COMPONENTS_TYPE_NAME}/${
+          name + file.substring(file.indexOf('.'))
+        }`;
 
   // Copy the template file to the new path with the new name.
   fs.copyFileSync(`${PATH_TEMPLATES}/${file}`, fullFilePath);

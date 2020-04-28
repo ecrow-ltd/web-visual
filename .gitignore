@@ -11,6 +11,8 @@ logs
 # Compiled versions
 .lib
 .dist
+.tmp
+.pkg
 doc
 .build
 
