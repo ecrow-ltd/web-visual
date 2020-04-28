@@ -14,6 +14,6 @@ import COMPONENT_NAME from './COMPONENT_NAME';
 /**
  * COMPONENT_NAME Chapter
  */
-Story.add('STORY_NAME', () => {
+Story('STORY_NAME').add('COMPONENT_NAME', () => {
   return <COMPONENT_NAME />;
 });
