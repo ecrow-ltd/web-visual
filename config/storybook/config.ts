@@ -4,7 +4,7 @@ import theme from './theme';
 
 // automatically import all files ending in *.chapter.tsx
 // @ts-ignore
-const req = require['context']('../../src/components', true, /.chapter.tsx$/);
+const req = require['context']('../../src/component', true, /.chapter.tsx$/);
 
 function loadStories() {
   addParameters({

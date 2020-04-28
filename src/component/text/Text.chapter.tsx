@@ -7,7 +7,7 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 /**
  * Require necessary components
  */
-import PrimitiveStory from '@stories/Primitive.story';
+import PrimitiveStory from '@story/Primitive.story';
 import React from 'react';
 import Text, { IProps as ITextProps } from './Text';
 

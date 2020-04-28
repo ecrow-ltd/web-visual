@@ -7,7 +7,7 @@
 /**
  * Require necessary components
  */
-import STORY_NAMEStory from '@stories/STORY_NAME.story';
+import STORY_NAMEStory from '@story/STORY_NAME.story';
 import React from 'react';
 import COMPONENT_NAME from './COMPONENT_NAME';
 

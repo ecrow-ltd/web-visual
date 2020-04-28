@@ -1,7 +1,7 @@
 import ThemeContext from '@context/ThemeContext';
 import { IThemeProps } from '@theme/ITheme';
-import Text from '@primitives/text';
-import { Styled as TouchableStyled } from '@primitives/touchable/Touchable';
+import Text from '@component/text/Text';
+import { Styled as TouchableStyled } from '@component/touchable/Touchable';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';

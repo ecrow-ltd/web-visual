@@ -7,8 +7,8 @@ import { array, boolean, number, select, text } from '@storybook/addon-knobs';
 /**
  * Require necessary components
  */
-import Text from '@primitives/text';
-import PrimitiveStory from '@stories/Primitive.story';
+import Text from '@component/text/Text';
+import PrimitiveStory from '@story/Primitive.story';
 import React from 'react';
 import { CSSObject } from 'styled-components';
 import Container, { IProps as IContainerProps } from './Container';

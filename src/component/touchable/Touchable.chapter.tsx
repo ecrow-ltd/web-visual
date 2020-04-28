@@ -7,13 +7,13 @@
 /**
  * Require necessary components
  */
-import PrimitiveStory from '@stories/Primitive.story';
+import PrimitiveStory from '@story/Primitive.story';
 import React from 'react';
-import Input from './Input';
+import Touchable from './Touchable';
 
 /**
- * Input Chapter
+ * Touchable Chapter
  */
-PrimitiveStory.add('Input', () => {
-  return <Input />;
+PrimitiveStory.add('Touchable', () => {
+  return <Touchable />;
 });
