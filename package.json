@@ -1,5 +1,5 @@
 {
-  "name": "@ecrow-ltd/web-visual",
+  "name": "@ecrowjs/web-visual",
   "library": "web-visual",
   "version": "1.0.0",
   "description": "A minimal pure JavaScript component library for the web.",
