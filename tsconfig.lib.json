@@ -18,8 +18,7 @@
       "@src/*": ["src/*"],
       "@theme/*": ["src/theme/*"],
       "@story/*": ["src/story/*"],
-      "@component/*": ["src/component/*"],
-      "@context/*": ["src/context/*"]
+      "@component/*": ["src/component/*"]
     }
   },
   "include": ["./src/components/index.ts"]

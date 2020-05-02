@@ -26,8 +26,7 @@
       "@src/*": ["src/*"],
       "@theme/*": ["src/theme/*"],
       "@story/*": ["src/story/*"],
-      "@component/*": ["src/component/*"],
-      "@context/*": ["src/context/*"]
+      "@library/*": ["src/library/*"]
     }
   },
   "include": ["src/**/*"],

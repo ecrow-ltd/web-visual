@@ -1,5 +1,5 @@
 import { ITheme, IThemeProps } from '@theme/ITheme';
-import ThemeContext from '@context/ThemeContext';
+import ThemeContext from '@theme/ThemeContext';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';

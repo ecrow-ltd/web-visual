@@ -36,13 +36,14 @@ const selectVariant = {
 Story('Core').add('Text', () => {
   return (
     <Text
-      value={text('value', 'Some Sample Text')}
       selectable={boolean('selectable', true)}
       variant={select(
         selectVariant.label,
         selectVariant.options,
         selectVariant.default,
       )}
-    />
+    >
+      {text('text', 'Hello Web Visual')}
+    </Text>
   );
 });

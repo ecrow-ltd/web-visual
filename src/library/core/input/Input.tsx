@@ -1,4 +1,4 @@
-import ThemeContext from '@context/ThemeContext';
+import ThemeContext from '@theme/ThemeContext';
 import { IThemeProps } from '@theme/ITheme';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';

@@ -1,7 +1,6 @@
 /**
  * Creates a new component with a chapter and unit test.
  */
-const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -9,12 +8,14 @@ const fs = require('fs');
 const args = process.argv.slice(2);
 // Extract arguments
 const type = args[0] ? args[0] : null;
-const name = args[1] ? args[1] : null;
+const name = args[1]
+  ? args[1].charAt(0).toUpperCase() + args[1].slice(1)
+  : null;
 
 // Get the absolute path to this directory.
 const PATH_ROOT = path.resolve('.');
 const PATH_TEMPLATES = `${PATH_ROOT}/scripts/templates`;
-const PATH_COMPONENTS = `${PATH_ROOT}/src/components`;
+const PATH_LIBRARY = `${PATH_ROOT}/src/library`;
 
 // Array of template files
 const templateFiles = [
@@ -29,19 +30,20 @@ const templateReplaceString = {
 };
 
 // Array of allowable component types
-const typesPaths = {
-  primitive: 'primitives',
-  construct: 'constructs',
-  widget: 'widgets',
-};
-const typesAllowed = Object.keys(typesPaths);
+const typesAllowed = fs
+  .readdirSync(PATH_LIBRARY, { withFileTypes: true })
+  .filter((dirent) => dirent.isDirectory())
+  .map((dirent) => dirent.name);
 
 /**
  * ERROR CHECKING
  */
+const usageString =
+  'npm run new <library_name> <new_component_name>\nyarn new <library_name> <new_component_name>';
+
 // Ensure type is not undefined or else error.
 if (!type) {
-  console.log('\nThe type of component must be provided.\n');
+  console.log('\nThe library name of component must be provided.\n');
   return 1;
 }
 
@@ -54,9 +56,9 @@ if (!name || !name.length) {
 // Ensure that the type is among allowable types.
 if (!typesAllowed.includes(type)) {
   console.log(
-    `\nType of component must be one of the following: ${typesAllowed.join(
-      ', ',
-    )}.\n`,
+    `\n${usageString}\n\n<library_name> for the new component must be one of the following:\n> ${typesAllowed.join(
+      '\n',
+    )}\n`,
   );
   return 1;
 }
@@ -71,7 +73,7 @@ const STORY_NAME = type.charAt(0).toUpperCase() + type.slice(1);
  * FILE CREATION
  */
 // Path the the component type directory
-const PATH_COMPONENTS_TYPE = `${PATH_COMPONENTS}/${typesPaths[type]}`;
+const PATH_COMPONENTS_TYPE = `${PATH_LIBRARY}/${type.toLowerCase()}`;
 // Path to the component's new directory with the name.
 const PATH_COMPONENTS_TYPE_NAME = `${PATH_COMPONENTS_TYPE}/${name.toLowerCase()}`;
 if (!fs.existsSync(PATH_COMPONENTS_TYPE)) {

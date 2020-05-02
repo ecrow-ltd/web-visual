@@ -1,4 +1,4 @@
-import defaultTheme from '@theme/default';
+import defaultTheme from './default';
 import React from 'react';
 
 /**

@@ -1,7 +1,7 @@
-import ThemeContext from '@context/ThemeContext';
+import ThemeContext from '@theme/ThemeContext';
 import { IThemeProps } from '@theme/ITheme';
-import Text from '@component/text/Text';
-import { Styled as TouchableStyled } from '@component/touchable/Touchable';
+import Text from '../text';
+import { Styled as TouchableStyled } from '../touchable/Touchable';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -83,11 +83,12 @@ class Button extends PureComponent<IProps, IState> {
         {(theme) => (
           <Styled {...props} theme={theme}>
             <Text
-              value={children?.toString()}
               selectable={false}
               indicate={props.indicate}
               variant={props.variant === 'tiny' ? 'small' : 'base'}
-            />
+            >
+              {children}
+            </Text>
           </Styled>
         )}
       </ThemeContext.Consumer>

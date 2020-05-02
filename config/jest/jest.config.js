@@ -10,9 +10,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '^@theme/(.*)$': '<rootDir>/src/theme/$1',
-    '^@context/(.*)$': '<rootDir>/src/context/$1',
     '^@component/(.*)$': '<rootDir>/src/component/$1',
-    '^@context/(.*)$': '<rootDir>/src/context/$1',
     '^@story/(.*)$': '<rootDir>/src/story/$1',
   },
   verbose: false,

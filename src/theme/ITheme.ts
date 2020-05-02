@@ -1,13 +1,5 @@
 import { CSSObject } from 'styled-components';
 
-export interface IColorIndicate {
-  readonly neutral: string;
-  readonly positive: string;
-  readonly negative: string;
-  readonly creative: string;
-  readonly destructive: string;
-}
-
 export interface IColor {
   /**
    * The background color for the theme.
