@@ -1,5 +1,4 @@
-import ThemeContext from '@theme/ThemeContext';
-import { IThemeProps } from '@theme/ITheme';
+import { ThemeContext, IThemeProps } from '@ecrowjs/app-theme';
 import Text from '../text';
 import { Styled as TouchableStyled } from '../touchable/Touchable';
 import PropTypes from 'prop-types';

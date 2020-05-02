@@ -19,7 +19,7 @@ const PATH_TMP = `${PATH_ROOT}/.tmp`;
 
 const CONFIG = {
   include: [`${PATH_SRC}/**/*.{ts,tsx}`],
-  exclude: ['./**/index.*', './**/*.*.*'],
+  exclude: ['./**/*.*.*'],
 };
 
 /**
@@ -57,7 +57,7 @@ function copyToTmp(filePaths) {
     const paths = filePath.split('/');
     const category = paths[2];
     const tmpPath = ((c) => {
-      if (c === 'components') {
+      if (c === 'library') {
         return '';
       }
       return `${c}/`;
