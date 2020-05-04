@@ -1,8 +1,5 @@
 /**
- * Creates a publishable package for this library.
- * There are two folders this will create...
- * .tmp: Where the selected files to compile are copied to.
- * .pkg: Where the deliverable NPM package is stored after compiling files in .tmp.
+ * Prepares a ui
  */
 const { execSync } = require('child_process');
 const path = require('path');
@@ -66,32 +63,6 @@ function copyToTmp(filePaths) {
       fs.mkdirSync(`${PATH_TMP}/${tmpPath}`);
     }
     fs.copyFileSync(filePath, `${PATH_TMP}/${tmpPath}${fileName}`);
-  });
-}
-
-/**
- *
- * @param {string[]} fileNames
- * @param {ts.CompilerOptions} configuration
- */
-function compile(fileNames, configuration) {
-  // Create a Program with an in-memory emit
-  const createdFiles = {};
-  const host = ts.createCompilerHost(configuration);
-  host.writeFile = (fileName, contents) => (createdFiles[fileName] = contents);
-
-  // Prepare and emit the d.ts files
-  const program = ts.createProgram(fileNames, configuration, host);
-  program.emit();
-
-  // Loop through all the input files
-  fileNames.forEach((file) => {
-    console.log('### JavaScript\n');
-    console.log(host.readFile(file));
-
-    console.log('### Type Definition\n');
-    const dts = file.replace('.js', '.d.ts');
-    console.log(createdFiles[dts]);
   });
 }
 

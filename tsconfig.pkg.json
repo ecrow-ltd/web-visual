@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "lib": ["es2015"],
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "./.pkg",
+    "outDir": "./.pkg",
+    "removeComments": true,
+    "types": ["webpack-env", "react", "styled-components"],
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@theme/*": ["src/theme/*"],
+      "@story/*": ["src/story/*"],
+      "@component/*": ["src/component/*"]
+    }
+  },
+  "include": ["./src/library/core/**/*.*"],
+  "exclude": ["./src/library/core/**/*.*.*"]
+}

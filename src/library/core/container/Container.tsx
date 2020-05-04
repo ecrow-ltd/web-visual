@@ -1,4 +1,4 @@
-import { ThemeContext, IThemeProps, ITheme } from '@ecrowjs/app-theme';
+import { ThemeContext, IThemeProps, ITheme } from '@ecrowjs/theme';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';

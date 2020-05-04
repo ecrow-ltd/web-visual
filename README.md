@@ -1,10 +1,7 @@
-<div align="center">
-  <h1>Web Visual</h1>
-</div>
+<div align="center">@eCrowJS</div>
+<h1 align="center">Visual</h1>
 
-## Introduction
-
-Web Visual is a general purpose universal component library developed with ReactJS using ES6/TypeScript syntax. The library has it's own isolated environment to test, build, and document components before use in an application.
+eCrow Visual is a general purpose universal component library developed with ReactJS using ES6/TypeScript syntax. The library has it's own isolated environment to test, build, and document components before use in an application.
 
 ## Table of Contents
 
@@ -85,9 +82,10 @@ If you're [Running the Application](#running-the-application), you'll be able to
 ![Component](./docs/resources/web-visual-component-types.jpg)
 
 There are three levels of components: Primitive, Construct, and Widget components; each getting more intelligent through composition.
-* **Primitive** components are the most basic components consisting of raw HTML/JSX elements or a single composition of another Primitive component. They are also the only *styled* component.
-* **Construct** components compose of two or more *Primitive* or other *Construct* components. Like a login form consisting of two Primitive input fields.
-* **Widget** components are complex components that react to structured data while composing of Construct and/or Primitive components.
+
+- **Primitive** components are the most basic components consisting of raw HTML/JSX elements or a single composition of another Primitive component. They are also the only _styled_ component.
+- **Construct** components compose of two or more _Primitive_ or other _Construct_ components. Like a login form consisting of two Primitive input fields.
+- **Widget** components are complex components that react to structured data while composing of Construct and/or Primitive components.
 
 ## Building
 

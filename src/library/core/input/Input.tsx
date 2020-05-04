@@ -1,4 +1,4 @@
-import { ThemeContext, IThemeProps } from '@ecrowjs/app-theme';
+import { withTheme, IThemeProps } from '@ecrowjs/theme';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -7,18 +7,19 @@ export interface IProps {}
 
 export interface IState {}
 
-/**
- * Styling for the component.
- */
-export const Styled = styled.input<IProps>((props: IProps & IThemeProps) => {
-  const { theme } = props;
+export const /**
+   * Styling for the component.
+   */
+  Styled = styled.input<IProps>((props: IProps & IThemeProps) => {
+    const { theme } = props;
 
-  // Styling for this component.
-  const style: CSSObject = {};
+    // Styling for this component.
+    const style: CSSObject = {};
 
-  return style;
-});
+    return style;
+  });
 
+@withTheme()
 /**
  * The component
  */
@@ -28,11 +29,7 @@ class Input extends PureComponent<IProps, IState> {
   public static defaultProps = {};
 
   public render() {
-    return (
-      <ThemeContext.Consumer>
-        {(theme) => <Styled {...this.props} theme={theme} />}
-      </ThemeContext.Consumer>
-    );
+    return <Styled {...this.props} />;
   }
 }
 

@@ -1,4 +1,4 @@
-import { ThemeContext, IThemeProps } from '@ecrowjs/app-theme';
+import { withTheme, IThemeProps } from '@ecrowjs/theme';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled, { CSSObject } from 'styled-components';
@@ -99,6 +99,7 @@ export const Styled = styled.span<IProps & { skeleton: boolean }>(
   },
 );
 
+@withTheme()
 /**
  * Displays typography in its many variations. It is reactive to applied themes.
  */
@@ -147,7 +148,7 @@ class Text extends PureComponent<IProps, IState> {
     if (!children || (typeof children === 'string' && !children.length)) {
       skeleton = true;
       if (
-        ['title', 'heading1', 'heading2', 'heading3', 'base'].indexOf(
+        ['title', 'heading1', 'heading2', 'heading3', 'base', 'small'].indexOf(
           variant,
         ) >= 0
       ) {
@@ -162,13 +163,9 @@ class Text extends PureComponent<IProps, IState> {
     }
 
     return (
-      <ThemeContext.Consumer>
-        {(theme) => (
-          <Styled {...props} skeleton={skeleton} theme={theme}>
-            {text}
-          </Styled>
-        )}
-      </ThemeContext.Consumer>
+      <Styled {...props} skeleton={skeleton}>
+        {text}
+      </Styled>
     );
   }
 }

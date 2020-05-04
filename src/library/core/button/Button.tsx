@@ -1,4 +1,4 @@
-import { ThemeContext, IThemeProps } from '@ecrowjs/app-theme';
+import { withTheme, IThemeProps } from '@ecrowjs/theme';
 import Text from '../text';
 import { Styled as TouchableStyled } from '../touchable/Touchable';
 import PropTypes from 'prop-types';
@@ -50,6 +50,7 @@ export const Styled = styled(TouchableStyled)((props: any & IThemeProps) => {
   return style;
 });
 
+@withTheme()
 /**
  * A standard button component.
  */
@@ -78,19 +79,15 @@ class Button extends PureComponent<IProps, IState> {
     const { children, ...props } = this.props;
 
     return (
-      <ThemeContext.Consumer>
-        {(theme) => (
-          <Styled {...props} theme={theme}>
-            <Text
-              selectable={false}
-              indicate={props.indicate}
-              variant={props.variant === 'tiny' ? 'small' : 'base'}
-            >
-              {children}
-            </Text>
-          </Styled>
-        )}
-      </ThemeContext.Consumer>
+      <Styled {...props}>
+        <Text
+          selectable={false}
+          indicate={props.indicate}
+          variant={props.variant === 'tiny' ? 'small' : 'base'}
+        >
+          {children}
+        </Text>
+      </Styled>
     );
   }
 }

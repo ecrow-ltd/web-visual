@@ -1,8 +1,7 @@
 {
-  "name": "@ecrowjs/web-visual",
-  "library": "web-visual",
+  "name": "@ecrowjs/visual",
   "version": "1.0.0",
-  "description": "A minimal pure JavaScript component library for the web.",
+  "description": "A React JavaScript component library for the web.",
   "private": false,
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -14,8 +13,8 @@
     "clean": "npm run clean:lib && npm run clean:dist",
     "clean:dist": "rimraf ./.dist/*",
     "clean:lib": "rimraf ./.lib/*",
-    "build:pack": "rimraf ./.tmp/* && node ./scripts/package.js",
-    "build": "npm run build:lib && npm run build:dist",
+    "build": "npm run build:pkg",
+    "build:pkg": "rimraf ./.pkg/* && tsc -p ./tsconfig.pkg.json",
     "build:dist": "npm run build:dist:dev && npm run build:dist:prod",
     "build:dist:dev": "webpack --dest distribution --mode development --config config/webpack.config.js",
     "build:dist:prod": "webpack --dest distribution --mode production --config config/webpack.config.js",
@@ -79,7 +78,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "@ecrowjs/theme": "file:../app-theme",
+    "@ecrowjs/theme": "1.1.0",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/styled-components": "^4.4.1",
