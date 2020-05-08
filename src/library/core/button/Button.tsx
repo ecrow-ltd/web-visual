@@ -29,26 +29,28 @@ export interface IState {}
 /**
  * Styling for a button element.
  */
-export const Styled = styled(TouchableStyled)((props: any & IThemeProps) => {
-  // Extract the theme and component properties.
-  const { theme, indicate, variant } = props;
+export const Styled = styled(TouchableStyled).attrs({ style: () => ({}) })(
+  (props: any & IThemeProps) => {
+    // Extract the theme and component properties.
+    const { theme, indicate, variant } = props;
 
-  // Get the indicate color from the theme.
-  const indicateColor = theme.color[indicate].background;
+    // Get the indicate color from the theme.
+    const indicateColor = theme.color[indicate].background;
 
-  // Declare a mutable styling for this component.
-  const style: CSSObject = {
-    backgroundColor: indicateColor,
-    border: 'none',
-    borderRadius: theme.shape.border.radius,
-    boxShadow: theme.shadow[0],
-    display: 'inline-block',
-    outline: 'none',
-    padding: variant == 'tiny' ? '2px 8px' : '6px 12px',
-  };
+    // Declare a mutable styling for this component.
+    const style: CSSObject = {
+      backgroundColor: indicateColor,
+      border: 'none',
+      borderRadius: theme.shape.border.radius,
+      boxShadow: theme.shadow[0],
+      display: 'inline-block',
+      outline: 'none',
+      padding: variant == 'tiny' ? '2px 8px' : '6px 12px',
+    };
 
-  return style;
-});
+    return style;
+  },
+);
 
 @withTheme()
 /**
