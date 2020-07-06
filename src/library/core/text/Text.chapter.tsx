@@ -7,7 +7,7 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 /**
  * Require necessary components
  */
-import Story from '@story/Story.story';
+import Story from '@ecrowjs/storybook';
 import React from 'react';
 import Text, { IProps as ITextProps } from './Text';
 

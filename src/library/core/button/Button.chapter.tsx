@@ -1,4 +1,4 @@
-import Story from '@story/Story.story';
+import Story from '@ecrowjs/storybook';
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import React from 'react';

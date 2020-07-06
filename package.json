@@ -25,6 +25,7 @@
     "start": "npm run start:storybook",
     "start:lib": "nodemon --exec 'yarn build:lib' --watch ./src",
     "start:storybook": "start-storybook -p 2769 -s ./public -c ./config/storybook",
+    "es": "ecrowjs-storybook",
     "test": "jest --config=./config/jest/jest.config.js ./src",
     "new": "node ./scripts/new.js",
     "dev": "webpack --progress --colors --watch --env dev --config config/webpack.config.js",
@@ -78,6 +79,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "@ecrowjs/storybook": "1.0.0",
     "@ecrowjs/theme": "1.1.0",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",

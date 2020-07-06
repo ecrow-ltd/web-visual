@@ -7,7 +7,7 @@
 /**
  * Require necessary components
  */
-import Story from '@story/Story.story';
+import Story from '@ecrowjs/storybook';
 import React from 'react';
 import Touchable from './Touchable';
 

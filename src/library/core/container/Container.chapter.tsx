@@ -8,7 +8,7 @@ import { array, boolean, number, select, text } from '@storybook/addon-knobs';
  * Require necessary components
  */
 import Text from '../text';
-import Story from '@story/Story.story';
+import Story from '@ecrowjs/storybook';
 import React from 'react';
 import { CSSObject } from 'styled-components';
 import Container, { IProps as IContainerProps } from './Container';
